@@ -1,0 +1,30 @@
+@font-face {
+  font-family: Gilroy-Bold;
+  src: url('../assets/gilroy/Gilroy-Bold.ttf');
+}
+
+@font-face {
+  font-family: Gilroy;
+  src: url('../assets/gilroy/Gilroy-Regular.ttf');
+}
+
+@font-face {
+  font-family: Gilroy-Italic;
+  src: url('../assets/gilroy/Gilroy-RegularItalic.ttf');
+}
+
+@font-face {
+  font-family: Cimero;
+  src: url('../assets/Cimero/CimeroPro.otf');
+}
+
+/* #F21137
+ #68020F */
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Gilroy";
+  margin: 0;
+  font-size: 18px;
+}

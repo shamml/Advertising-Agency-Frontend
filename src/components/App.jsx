@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/Signup.Page/SignupPage';
+import "./styles.css"
 
 const App = () => {
   return (
