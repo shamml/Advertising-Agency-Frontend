@@ -39,7 +39,7 @@
 
 .STFormatCardBtn {
     width: 190px;
-    height: 40px;
+    height: 50px;
     border: none;
     background-color: #F21137;
     color: white;
@@ -48,7 +48,7 @@
 }
 
 .STFormatCardImage {
-    width: 380px;
+    width: 340px;
     height: 570px;
     margin-right: 150px;
 }
