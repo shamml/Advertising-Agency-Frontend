@@ -1,4 +1,30 @@
 footer {
-  height: 1000px;
+  padding: 20px 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoFooterImage {
+  width: 60px;
+  height: 60px;
+  margin-right: 270px;
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ourSocial {
+  height: 40px;
+  line-height: 40px;
+  font-family: "Bebas";
+  font-size: 25px;
+}
+
+.social img {
+  width: 40px;
+  margin-left: 10px;
 }
 

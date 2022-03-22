@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffe79d55-e3dc-4efc-a778-77a9da5d2d6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/STFormat/STFormat.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/STFormat/STFormat.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormats.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STformatCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/features/stformat.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.prettierrc" afterDir="false" />
@@ -120,9 +122,9 @@
       <change beforePath="$PROJECT_DIR$/../Sublime Text 3.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/configureStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.prettierrc" beforeDir="false" />
@@ -667,6 +669,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="26hHGMejAU2srLWeKGFPmUzUK0a" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

@@ -7,6 +7,8 @@ import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/Signup.Page/SignupPage';
 import "./styles.css"
 import BilboardPage from './pages/bilboardPage/BilboardPage';
+import StFormatPage from './pages/STFormatPage/STFormatPage'
+
 
 const App = () => {
   return (
@@ -17,6 +19,7 @@ const App = () => {
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/bilboard" element={<BilboardPage />}/>
+        <Route path="/STFormat" element={<StFormatPage />} />
       </Routes>
       <Footer />
     </div>
