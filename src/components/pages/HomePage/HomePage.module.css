@@ -1,0 +1,92 @@
+.carouselBlock {
+  background: url("../../../assets/backgrounds/bg6.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
+  padding: 210px 0 150px;
+}
+
+.carouselContent {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 100px;
+  font-weight: 700;
+  color: white;
+  font-family: "Cimero";
+  letter-spacing: 6px;
+}
+
+.form {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+}
+
+.formBtn {
+  width: 190px;
+  height: 40px;
+  border: none;
+  background-color: #F21137;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.visitCardBlock {
+  padding: 100px 150px;
+}
+
+.visitCardContent {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visitCardApp {
+  width: 480px;
+  height: 340px;
+}
+
+.visitCardTitle {
+  font-weight: 700;
+  font-size: 64px;
+  margin-bottom: 10px;
+  color: #68020F;
+  font-family: "Cimero";
+}
+
+.visitCardSubTitle {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.visitCardDesc {
+  margin-bottom: 10px;
+  margin-left: 15px;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.visitCardBtn {
+  width: 190px;
+  height: 40px;
+  border: none;
+  background-color: #F21137;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.visitCardImage {
+  width: 680px;
+  height: 470px;
+}

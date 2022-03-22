@@ -1,0 +1,14 @@
+@font-face {
+  font-family: Gilroy-Bold;
+  src: url('../src/assets/gilroy/Gilroy-Bold.ttf');
+}
+
+@font-face {
+  font-family: Gilroy;
+  src: url('../src/assets/gilroy/Gilroy-Regular.ttf');
+}
+
+@font-face {
+  font-family: Gilroy-Italic;
+  src: url('../src/assets/gilroy/Gilroy-RegularItalic.ttf');
+}
