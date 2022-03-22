@@ -3,6 +3,7 @@ import styles from './HomePage.module.css';
 import Carousel from '../../carousel/Carousel';
 import VisitCard from '../../visitCard/VisitCard';
 import StFormat from '../../STFormat/STFormat'
+import Bilboard from '../../bilboard/Bilboard';
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <Carousel />
       <VisitCard />
       <StFormat/>
+      <Bilboard />
     </div>
   );
 };
