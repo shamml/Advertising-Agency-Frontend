@@ -18,6 +18,11 @@
   src: url('../assets/Cimero/CimeroPro.otf');
 }
 
+@font-face {
+  font-family: Bebas;
+  src: url('../assets/Cimero/ofont.ru_Bebas\ Neue.ttf');
+}
+
 /* #F21137
  #68020F */
 
