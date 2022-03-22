@@ -1,0 +1,29 @@
+.STFormatMain {
+    display: flex;
+    width: 1200px;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.STFormatCard {
+    width:300px;
+    margin: 15px 50px;
+}
+.STFormat {
+    position: relative;
+    overflow:hidden;
+    width:350px;
+    height:400px;
+
+}
+.STFormat img {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    height:400px;
+    object-fit:cover;
+    width:350px;
+}
+.price {
+
+}
