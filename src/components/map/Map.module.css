@@ -1,0 +1,12 @@
+.map {
+    text-align: center;
+    background-color: bisque;
+}
+
+.iframe {
+    padding: 150px 0;
+}
+
+.iframe iframe {
+    border-radius: 15px;
+}
