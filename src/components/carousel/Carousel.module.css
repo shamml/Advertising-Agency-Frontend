@@ -1,0 +1,38 @@
+.carouselBlock {
+  background: url("../../assets/backgrounds/bg6.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
+  padding: 210px 0 150px;
+}
+
+.carouselContent {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 100px;
+  font-weight: 700;
+  color: white;
+  font-family: "Cimero";
+  letter-spacing: 6px;
+}
+
+.form {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+}
+
+.formBtn {
+  width: 190px;
+  height: 40px;
+  border: none;
+  background-color: #F21137;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
