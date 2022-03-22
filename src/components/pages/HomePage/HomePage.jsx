@@ -11,8 +11,8 @@ const HomePage = () => {
     <div className={styles.homePage}>
       <Carousel />
       <VisitCard />
-      <StFormat/>
       <Bilboard />
+      <StFormat/>
       <Map />
     </div>
   );

@@ -7,12 +7,12 @@ function Carousel(props) {
       <div className={styles.carouselBlock}>
         <div className={styles.carouselContent}>
           <div className={styles.title}>
-            РЕКЛАМНОЕ <br /> АГЕНТСТВО <br /> ПОЛНОГО <br /> ЦИКЛА
+            РЕКЛАМНОЕ <br /> <p>АГЕНТСТВО</p> ПОЛНОГО <br /> ЦИКЛА
           </div>
           <div className={styles.form}>
-            <div className={styles.formTitle}>Получить бесплатную консультацию</div>
-            <input className={styles.formFirstInput} type="text" placeholder="Ваше имя..." />
-            <input className={styles.formSecondInput} type="text" placeholder="Ваше телефон..." />
+            <div className={styles.formTitle}>ПОЛУЧИТЬ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ</div>
+            <input className={styles.formFirstInput} type="text" placeholder="Ваше имя.." />
+            <input className={styles.formSecondInput} type="text" placeholder="Ваш телефон.." />
             <button className={styles.formBtn}>Отправить</button>
           </div>
         </div>
