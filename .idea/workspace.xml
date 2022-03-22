@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffe79d55-e3dc-4efc-a778-77a9da5d2d6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/footer/Footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/Header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/HomePage/styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/SigninPage/SigninPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/SigninPage/styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/Signup.Page/SignupPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/Signup.Page/styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/configureStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/features/application.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/STFormat/STFormat.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/STFormat/STFormat.module.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.prettierrc" afterDir="false" />
@@ -128,6 +120,9 @@
       <change beforePath="$PROJECT_DIR$/../Sublime Text 3.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.prettierrc" beforeDir="false" />
@@ -670,7 +665,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectId" id="26hHGMejAU2srLWeKGFPmUzUK0a" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -693,6 +689,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Admin\Desktop\advertising-agency-frontend\node_modules\prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -724,7 +721,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1647868801408</updated>
-      <workItem from="1647868802937" duration="3658000" />
+      <workItem from="1647868802937" duration="5458000" />
+      <workItem from="1647934431284" duration="7665000" />
     </task>
     <servers />
   </component>
@@ -741,5 +739,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
