@@ -1,57 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './CartPage.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRents } from '../../../redux/features/cart';
 
 const CartPage = () => {
-  // const rents = useSelector(state => state.cart.rents)
+  const dispatch = useDispatch();
 
-  const rents = [
-    {
-      adress: 'gggggg',
-      image: 'IIIII',
-      sideA: false,
-      sideB: true,
-      price: 8000,
-    },
-    {
-      adress: 'aaaaaa',
-      image: 'IIIII',
-      sideA: false,
-      sideB: true,
-      price: 9000,
-    },
-    {
-      adress: 'eeeeee',
-      image: 'IIIII',
-      sideA: true,
-      sideB: true,
-      price: 12000,
-    },
-  ];
+  const rents = useSelector(state => state.cart.products.rents);
+  const sales = useSelector(state => state.cart.products.sales);
+  const userId = useSelector(state => state.application.id)
 
-  const sales = [
-    {
-      adress: 'gggggg',
-      image: 'IIIII',
-      sideA: false,
-      sideB: true,
-      price: 8000,
-    },
-    {
-      adress: 'aaaaaa',
-      image: 'IIIII',
-      sideA: false,
-      sideB: true,
-      price: 9000,
-    },
-    {
-      adress: 'eeeeee',
-      image: 'IIIII',
-      sideA: true,
-      sideB: true,
-      price: 12000,
-    },
-  ];
+  console.log(rents);
+  useEffect(() => {
+    dispatch(fetchRents(userId));
+  }, [dispatch]);
+
   return (
     <div className={styles.cartPage}>
       <div className={styles.cartBlock}>

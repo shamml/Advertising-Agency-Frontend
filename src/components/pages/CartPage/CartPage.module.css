@@ -1,0 +1,19 @@
+.cartPage {
+  width: 1200px;
+  margin: auto;
+  background: #000;
+}
+
+.rent {
+  margin: 20px auto;
+  width: 1000px;
+  height: 200px;
+  background-color: rgb(202, 178, 178);
+}
+
+.sale {
+  margin: 20px auto;
+  width: 1000px;
+  height: 200px;
+  background-color: rgb(202, 178, 178);
+}

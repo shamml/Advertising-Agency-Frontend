@@ -1,5 +1,8 @@
 const initialState = {
-  rents: [],
+  products: {
+    rents: [],
+    sales: []
+  },
   error: null,
   loading: false,
   loadingProduct: true,
@@ -16,13 +19,19 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        rents: action.payload,
+        products: {
+          ...state.products,
+          rents: action.payload,
+        },
       };
     case 'cart/fetch-cart/rejected':
       return {
         ...state,
         loading: false,
-        rents: [],
+        products: {
+          ...state.products,
+          rents: [],
+        },
         error: action.error,
       };
     case 'STFormat/patch/pending':
@@ -34,13 +43,19 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         loadingProduct: false,
-        rents: [...state.items, action.payload],
+        products: {
+          ...state.products,
+          rents: [...state.products.rents, action.payload],
+        },
       };
     case 'STFormat/patch/rejected':
       return {
         ...state,
         loadingProduct: false,
-        rents: [],
+        products: {
+          ...state.products,
+          rents: [],
+        },
         error: action.error,
       };
     case 'billboard/patch/pending':
@@ -52,13 +67,19 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        rents: [...state.rent, action.payload],
+        products: {
+          ...state.products,
+          rents: [...state.products.rents, action.payload],
+        },
       };
     case 'billboard/patch/rejected':
       return {
         ...state,
         loading: false,
-        rents: [],
+        products: {
+          ...state.products,
+          rents: [],
+        },
         error: action.error,
       };
     default:
@@ -77,7 +98,6 @@ export const fetchRents = (id) => {
       });
 
       const json = await res.json();
-
       console.log(json);
 
       if (json.error) {
@@ -124,8 +144,8 @@ export const addSTFormatToCart = (id, STFormat) => {
     }
   };
 };
+
 export const addBillboardToCart = (id, billboard) => {
-  console.log(billboard);
   return async (dispatch) => {
     dispatch({ type: 'billboard/patch/pending' });
     try {
@@ -139,6 +159,36 @@ export const addBillboardToCart = (id, billboard) => {
       const json = await res.json();
 
       console.log(json);
+
+      if (json.error) {
+        dispatch({
+          type: 'billboard/patch/rejected',
+          error: 'Ошибка при запросе',
+        });
+      } else {
+        dispatch({ type: 'billboard/patch/fulfilled', payload: json });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'billboard/patch/rejected',
+        error: e.toString(),
+      });
+    }
+  };
+};
+
+export const addVisitCardToCart = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: 'billboard/patch/pending' });
+    try {
+      const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({  }),
+      });
+      const json = await res.json();
 
       if (json.error) {
         dispatch({
