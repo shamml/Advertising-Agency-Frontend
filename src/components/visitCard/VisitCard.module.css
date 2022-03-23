@@ -1,5 +1,6 @@
 .visitCardBlock {
-  padding: 100px 150px;
+  padding: 0 150px;
+  background-color: rgb(0, 0, 0);
 }
 
 .visitCardContent {
@@ -12,15 +13,16 @@
 
 .visitCardApp {
   width: 480px;
-  height: 340px;
+  height: 350px;
 }
 
 .visitCardTitle {
   font-weight: 700;
   font-size: 64px;
   margin-bottom: 10px;
-  color: #68020F;
+  color: #ffffff;
   font-family: "Cimero";
+  color: #ffffff;
 }
 
 .visitCardSubTitle {
@@ -28,6 +30,7 @@
   font-size: 28px;
   margin-bottom: 10px;
   margin-left: 15px;
+  color: #ffffff;
 }
 
 .visitCardDesc {
@@ -35,6 +38,7 @@
   margin-left: 15px;
   font-size: 22px;
   line-height: 27px;
+  color: #ffffff;
 }
 
 .visitCardBtn {
@@ -48,6 +52,5 @@
 }
 
 .visitCardImage {
-  width: 680px;
-  height: 470px;
+  width: 750px;
 }

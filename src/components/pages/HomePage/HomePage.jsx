@@ -10,8 +10,8 @@ const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <Carousel />
-      <VisitCard />
       <Bilboard />
+      <VisitCard />
       <StFormat/>
       <Map />
     </div>

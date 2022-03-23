@@ -7,9 +7,9 @@ const StFormat = () => {
   return (
     <div className={styles.STFormatCardBlock}>
       <div className={styles.STFormatCardContent}>
+        <img className={styles.STFormatCardImage} src={visitCardImage} alt="" />
         <div className={styles.STFormatCardApp}>
           <div className={styles.STFormatCardTitle}>СИТИ-ФОРМАТ</div>
-          <div className={styles.STFormatCardSubTitle}>Доставка по городу</div>
           <div className={styles.STFormatCardDesc}>
             Технически сити-формат — это световой короб (лайтбокс),
             имеющий строго определенные размеры: 1,2 на 1,8 м.
@@ -17,10 +17,9 @@ const StFormat = () => {
             Второй вариант более эффективен и используется гораздо чаще.
           </div>
           <Link to="/STFormat">
-            <button className={styles.STFormatCardBtn}>Оформить заказ</button>
+            <button className={styles.STFormatCardBtn}>Арендовать</button>
           </Link>
         </div>
-        <img className={styles.STFormatCardImage} src={visitCardImage} alt="" />
       </div>
     </div>
   )

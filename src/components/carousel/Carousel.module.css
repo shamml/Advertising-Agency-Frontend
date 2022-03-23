@@ -1,8 +1,8 @@
 .carouselBlock {
-  background: url("../../assets/backgrounds/bg6.jpg");
+  background: url("../../assets/backgrounds/bg7.jpg");
   background-size: 100%;
   background-attachment: fixed;
-  padding: 210px 0 150px;
+  padding: 100px 0 150px;
 }
 
 .carouselDark {
@@ -20,7 +20,7 @@
 .title {
   font-size: 110px;
   font-weight: 700;
-  color: white;
+  color: rgb(0, 0, 0);
   font-family: "Bebas";
   letter-spacing: 6px;
 }
@@ -47,7 +47,7 @@
   margin-bottom: 10px;
   font-weight: 700;
   font-family: "Gilroy";
-  color: white;
+  color: rgb(0, 0, 0);
   letter-spacing: 3px;
 }
 
