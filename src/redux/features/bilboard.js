@@ -1,8 +1,8 @@
 const initialState = {
   loading: false,
   billboards: [],
+  cart: [],
   error: null,
-  token: null,
 };
 
 export default function bilboard(state = initialState, action) {
@@ -24,10 +24,11 @@ export default function bilboard(state = initialState, action) {
         loading: false,
         error: action.error,
       };
+    
     default:
       return state;
   }
-};
+}
 
 export const getAllBilboards = () => {
   return async (dispatch) => {
@@ -45,3 +46,5 @@ export const getAllBilboards = () => {
     }
   };
 };
+
+
