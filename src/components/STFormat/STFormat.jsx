@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from './STFormat.module.css'
-import visitCardImage from '../../assets/STFormat.png'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styles from './STFormat.module.css';
+import visitCardImage from '../../assets/STFormat.png';
+import { Link } from 'react-router-dom';
 
 const StFormat = () => {
   return (
@@ -11,10 +11,10 @@ const StFormat = () => {
         <div className={styles.STFormatCardApp}>
           <div className={styles.STFormatCardTitle}>СИТИ-ФОРМАТ</div>
           <div className={styles.STFormatCardDesc}>
-            Технически сити-формат — это световой короб (лайтбокс),
-            имеющий строго определенные размеры: 1,2 на 1,8 м.
-            Он может быть как односторонним, так и двухсторонним.
-            Второй вариант более эффективен и используется гораздо чаще.
+            Технически сити-формат — это световой короб (лайтбокс), имеющий
+            строго определенные размеры: 1,2 на 1,8 м. Он может быть как
+            односторонним, так и двухсторонним. Второй вариант более эффективен
+            и используется гораздо чаще.
           </div>
           <Link to="/STFormat">
             <button className={styles.STFormatCardBtn}>Арендовать</button>
@@ -22,7 +22,7 @@ const StFormat = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StFormat
+export default StFormat;

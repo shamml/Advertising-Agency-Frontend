@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './STFormats.module.css';
 import StFormatButtons from './STFormatButtons';
-import { GrLocation } from 'react-icons/gr'
-import { BiRuble } from 'react-icons/bi'
-import { CgSidebarRight } from 'react-icons/cg'
-import { CgSidebar } from 'react-icons/cg'
+import { GrLocation } from 'react-icons/gr';
+import { BiRuble } from 'react-icons/bi';
+import { CgSidebarRight } from 'react-icons/cg';
+import { CgSidebar } from 'react-icons/cg';
 
 const STformatCard = ({ STFormat }) => {
   return (
@@ -14,7 +14,7 @@ const STformatCard = ({ STFormat }) => {
       </div>
       <div className={styles.STFormatInfo}>
         <div className={styles.sideA}>
-          <CgSidebar/>
+          <CgSidebar />
           sideA:{' '}
           {STFormat.sideA ? (
             <input type="checkbox" />
@@ -24,7 +24,7 @@ const STformatCard = ({ STFormat }) => {
         </div>
         <div className={styles.sideB}>
           <div>
-            <CgSidebarRight/>
+            <CgSidebarRight />
           </div>
           <div>
             sideB:{' '}
@@ -35,8 +35,14 @@ const STformatCard = ({ STFormat }) => {
             )}
           </div>
         </div>
-        <div className={styles.price}> <BiRuble/> {STFormat.price}</div>
-        <div className={styles.address}> <GrLocation/> {STFormat.address}</div>
+        <div className={styles.price}>
+          {' '}
+          <BiRuble /> {STFormat.price}
+        </div>
+        <div className={styles.address}>
+          {' '}
+          <GrLocation /> {STFormat.address}
+        </div>
         <StFormatButtons STFormat={STFormat} />
       </div>
     </div>

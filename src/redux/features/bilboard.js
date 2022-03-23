@@ -24,7 +24,7 @@ export default function bilboard(state = initialState, action) {
         loading: false,
         error: action.error,
       };
-    
+
     default:
       return state;
   }
@@ -46,5 +46,3 @@ export const getAllBilboards = () => {
     }
   };
 };
-
-

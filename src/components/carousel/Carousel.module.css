@@ -1,5 +1,5 @@
 .carouselBlock {
-  background: url("../../assets/backgrounds/bg7.jpg");
+  background: url('../../assets/backgrounds/bg7.jpg');
   background-size: 100%;
   background-attachment: fixed;
   padding: 100px 0 150px;
@@ -21,7 +21,7 @@
   font-size: 110px;
   font-weight: 700;
   color: rgb(0, 0, 0);
-  font-family: "Bebas";
+  font-family: 'Bebas';
   letter-spacing: 6px;
 }
 
@@ -29,12 +29,12 @@
   font-size: 110px;
   font-weight: 700;
   color: white;
-  font-family: "Bebas";
+  font-family: 'Bebas';
   letter-spacing: 6px;
   /* color: transparent; */
   /* background-clip: text; */
   /* background-image: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,51,35,1) 53%, rgba(253,97,48,1) 77%, rgba(253,29,29,1) 100%, rgba(252,176,69,1) 100%); */
-  color: #F21137;
+  color: #f21137;
 }
 
 .form {
@@ -46,7 +46,7 @@
   text-align: end;
   margin-bottom: 10px;
   font-weight: 700;
-  font-family: "Gilroy";
+  font-family: 'Gilroy';
   color: rgb(0, 0, 0);
   letter-spacing: 3px;
 }
@@ -63,7 +63,7 @@
 }
 
 .formBtn:hover {
-  background-color: #F21137;
+  background-color: #f21137;
   color: white;
 }
 

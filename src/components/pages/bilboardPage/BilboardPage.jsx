@@ -18,8 +18,6 @@ const BilboardPage = () => {
       {billboards.map((billboard) => {
         return <BilboardCard key={billboard._id} billboard={billboard} />;
       })}
-
-
     </div>
   );
 };

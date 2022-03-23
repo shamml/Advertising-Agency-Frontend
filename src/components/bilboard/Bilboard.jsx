@@ -17,7 +17,7 @@ const Bilbord = () => {
             закреплённую на опоре.
           </div>
           <Link to="/bilboard">
-          <button className={styles.bilboardBtn}>Арендовать</button>
+            <button className={styles.bilboardBtn}>Арендовать</button>
           </Link>
         </div>
       </div>
