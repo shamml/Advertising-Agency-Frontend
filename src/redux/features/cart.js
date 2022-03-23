@@ -146,19 +146,21 @@ export const addSTFormatToCart = (id, STFormat) => {
 };
 
 export const addBillboardToCart = (id, billboard) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const state = getState();
     dispatch({ type: 'billboard/patch/pending' });
     try {
       const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
         method: 'PATCH',
         headers: {
+          Authorization: `Bearer ${state.application.token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ product: billboard }),
       });
       const json = await res.json();
 
-      console.log(json);
+      console.log(json.product.rents);
 
       if (json.error) {
         dispatch({
