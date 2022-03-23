@@ -29,7 +29,7 @@ export default function stformat(state= initialState, action) {
   }
 }
 
-export const fetchSTFormat = () => {
+export const getAllSTFormat = () => {
   return async (dispatch) => {
     dispatch({ type: 'STFormat/fetch-STFormat/pending' });
     try {

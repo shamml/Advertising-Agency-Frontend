@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import application from './features/application';
 import stformat from './features/stformat';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import bilboard from './features/bilboard';
 import cart from './features/cart'
 
