@@ -13,7 +13,7 @@ const Header = () => {
         <a>О нас</a>
         <a>Контакты</a>
       </nav>
-      <img className={styles.cartIcon} src={cartIcon} alt="" />
+      <Link to='/cartpage'><img className={styles.cartIcon} src={cartIcon} alt="carticon"/></Link>
       <Link to='/signin'><button className={styles.signInBtn}>Войти</button></Link>
     </header>
   );
