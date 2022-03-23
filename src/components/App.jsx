@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/Signup.Page/SignupPage';
 import './styles.css';
-import BilboardPage from './pages/bilboardPage/BilboardPage';
+import BilboardPage from './pages/BilboardPage/BilboardPage';
 import StFormatPage from './pages/STFormatPage/STFormatPage';
 import VisitCardPage from './pages/VisitCardPage/VisitCardPage';
 import CartPage from './CartPage/CartPage';
@@ -23,6 +23,8 @@ const App = () => {
         <Route path="/signin" element={<Navigate to="/signin" replace />} />
         <Route path="/signup" element={<Navigate to="/signin" replace />} />
         <Route path="/bilboard" element={<BilboardPage />} />
+        <Route path="/reviews" element={<ReviewPage />} />
+        <Route path="/visitcard" element={<VisitCardPage />} />
         <Route path="/STFormat" element={<StFormatPage />} />
       </Routes>
       <Footer />
