@@ -15,18 +15,11 @@ const BilboardPage = () => {
 
   return (
     <div className={styles.bilboardMain}>
-      {billboards.map((item) => {
-        return (
-          <BilboardCard
-            key={item._id}
-            image={item.image}
-            address={item.address}
-            sideA={item.sideA}
-            sideB={item.sideB}
-            price={item.price}
-          />
-        );
+      {billboards.map((billboard) => {
+        return <BilboardCard key={billboard._id} billboard={billboard} />;
       })}
+
+
     </div>
   );
 };

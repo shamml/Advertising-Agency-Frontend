@@ -98,7 +98,7 @@ const SigninPage = () => {
           {passwordDirty && passwordError && (
             <div style={{ color: 'red' }}>{passwordError}</div>
           )}
-          <Link to="/signin">
+          <Link to="/">
             <button
               onClick={handleClickAuthorization}
               type="submit"

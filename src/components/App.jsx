@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header/Header';
 import Footer from './footer/Footer';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/Signup.Page/SignupPage';
@@ -10,10 +10,24 @@ import BilboardPage from './pages/bilboardPage/BilboardPage';
 import StFormatPage from './pages/STFormatPage/STFormatPage'
 import VisitCardPage from './pages/VisitCardPage/VisitCardPage';
 import CartPage from './CartPage/CartPage';
-
+import { useSelector } from 'react-redux';
+import ReviewPage from './pages/ReviewPage/ReviewPage';
 
 const App = () => {
-  return (
+  const token = useSelector((state) => state.application.token);
+  return token ? (
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signin" element={<Navigate to="/signin" replace />} />
+        <Route path="/signup" element={<Navigate to="/signin" replace />} />
+        <Route path="/bilboard" element={<BilboardPage />} />
+        <Route path="/STFormat" element={<StFormatPage />} />
+      </Routes>
+      <Footer />
+    </div>
+  ) : (
     <div>
       <Header />
       <Routes>
@@ -24,6 +38,7 @@ const App = () => {
         <Route path="/visitcard" element={<VisitCardPage />}/>
         <Route path="/cartpage" element={<CartPage />}/>
         <Route path="/STFormat" element={<StFormatPage />} />
+        <Route path='/reviews' element={<ReviewPage />} />
       </Routes>
       <Footer />
     </div>
