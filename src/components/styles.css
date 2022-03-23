@@ -26,10 +26,9 @@
 /* #F21137
  #68020F */
 
-
 * {
   box-sizing: border-box;
-  font-family: "Gilroy";
+  font-family: 'Gilroy';
   margin: 0;
   font-size: 18px;
 }

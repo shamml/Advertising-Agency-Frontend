@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./Carousel.module.css"
+import styles from './Carousel.module.css';
 
 function Carousel(props) {
   return (
@@ -10,15 +10,24 @@ function Carousel(props) {
             РЕКЛАМНОЕ <br /> <p>АГЕНТСТВО</p> ПОЛНОГО <br /> ЦИКЛА
           </div>
           <div className={styles.form}>
-            <div className={styles.formTitle}>ПОЛУЧИТЬ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ</div>
-            <input className={styles.formFirstInput} type="text" placeholder="Ваше имя.." />
-            <input className={styles.formSecondInput} type="text" placeholder="Ваш телефон.." />
+            <div className={styles.formTitle}>
+              ПОЛУЧИТЬ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ
+            </div>
+            <input
+              className={styles.formFirstInput}
+              type="text"
+              placeholder="Ваше имя.."
+            />
+            <input
+              className={styles.formSecondInput}
+              type="text"
+              placeholder="Ваш телефон.."
+            />
             <button className={styles.formBtn}>Отправить</button>
           </div>
         </div>
       </div>
     </div>
-    
   );
 }
 

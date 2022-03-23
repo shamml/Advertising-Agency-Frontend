@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./VisitCard.module.css";
+import styles from './VisitCard.module.css';
 import visitCardImage from '../../assets/visit-card.png';
 import { Link } from 'react-router-dom';
 

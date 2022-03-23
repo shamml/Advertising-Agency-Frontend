@@ -1,10 +1,10 @@
 const initialState = {
   items: [],
   loading: false,
-  error: null
-}
+  error: null,
+};
 
-export default function stformat(state= initialState, action) {
+export default function stformat(state = initialState, action) {
   switch (action.type) {
     case 'STFormat/fetch-STFormat/pending':
       return {
@@ -25,7 +25,7 @@ export default function stformat(state= initialState, action) {
         error: action.error,
       };
     default:
-      return state
+      return state;
   }
 }
 
@@ -46,7 +46,10 @@ export const getAllSTFormat = () => {
         dispatch({ type: 'STFormat/fetch-STFormat/fulfilled', payload: json });
       }
     } catch (e) {
-      dispatch({ type: 'STFormat/fetch-STFormat/rejected', error: e.toString() });
+      dispatch({
+        type: 'STFormat/fetch-STFormat/rejected',
+        error: e.toString(),
+      });
     }
   };
 };

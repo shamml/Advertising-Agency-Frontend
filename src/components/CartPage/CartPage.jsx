@@ -1,89 +1,86 @@
 import React from 'react';
-import styles from "./CartPage.module.css";
-import { useSelector } from 'react-redux'
+import styles from './CartPage.module.css';
+import { useSelector } from 'react-redux';
 
 const CartPage = () => {
-
   // const rents = useSelector(state => state.cart.rents)
 
   const rents = [
     {
-      adress: "gggggg",
-      image: "IIIII",
+      adress: 'gggggg',
+      image: 'IIIII',
       sideA: false,
       sideB: true,
-      price: 8000
+      price: 8000,
     },
     {
-      adress: "aaaaaa",
-      image: "IIIII",
+      adress: 'aaaaaa',
+      image: 'IIIII',
       sideA: false,
       sideB: true,
-      price: 9000
+      price: 9000,
     },
     {
-      adress: "eeeeee",
-      image: "IIIII",
+      adress: 'eeeeee',
+      image: 'IIIII',
       sideA: true,
       sideB: true,
-      price: 12000
+      price: 12000,
     },
-  ]
+  ];
 
   const sales = [
     {
-      adress: "gggggg",
-      image: "IIIII",
+      adress: 'gggggg',
+      image: 'IIIII',
       sideA: false,
       sideB: true,
-      price: 8000
+      price: 8000,
     },
     {
-      adress: "aaaaaa",
-      image: "IIIII",
+      adress: 'aaaaaa',
+      image: 'IIIII',
       sideA: false,
       sideB: true,
-      price: 9000
+      price: 9000,
     },
     {
-      adress: "eeeeee",
-      image: "IIIII",
+      adress: 'eeeeee',
+      image: 'IIIII',
       sideA: true,
       sideB: true,
-      price: 12000
+      price: 12000,
     },
-  ]
+  ];
   return (
     <div className={styles.cartPage}>
       <div className={styles.cartBlock}>
-        {
-          rents.map(rent => {
-            return (
-              <div className={styles.rent}>
-                <div>{rent.image}</div>
-                <div>{rent.name}</div>
-                <div>{rent.adress}</div>
-                {(rent.sideA && rent.sideB) ? <div>Обе стороны</div> : ""}
-                {(rent.sideA && !rent.sideB) && <div>Сторона А</div>}
-                {(!rent.sideA && rent.sideB) && <div>Сторона Б</div>}
-                <div>{rent.price}</div>
+        {rents.map((rent) => {
+          return (
+            <div className={styles.rent}>
+              <div>{rent.image}</div>
+              <div>{rent.name}</div>
+              <div>{rent.adress}</div>
+              {rent.sideA && rent.sideB ? <div>Обе стороны</div> : ''}
+              {rent.sideA && !rent.sideB && <div>Сторона А</div>}
+              {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
+              <div>{rent.price}</div>
+            </div>
+          );
+        })}
+        {sales.map((sale) => {
+          return (
+            <div className={styles.sale}>
+              <div>
+                <img src="/" alt="visitcard" />
               </div>
-            )
-          })
-        }
-        {
-          sales.map(sale => {
-            return (
-              <div className={styles.sale}>
-                <div><img src="/" alt="visitcard" /></div>
-                <div>{sale.name}</div>
-                <div>{sale.typePaper}</div>
-                <div>{sale.count}</div>
-                <div>{sale.price}</div>
-              </div>
-            )
-          }) 
-        }
+              <div>{sale.name}</div>
+              <div>{sale.typePaper}</div>
+              <div>{sale.count}</div>
+              <div>{sale.price}</div>
+            </div>
+          );
+        })}
       </div>
       <button>Оформить заказ</button>
     </div>

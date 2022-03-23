@@ -24,21 +24,21 @@
   width: 350px;
 }
 .STFormatInfo {
-    width: 350px;
+  width: 350px;
   padding: 15px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .sideB {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .STFormatButtons button {
-    width: 190px;
-    height: 50px;
-    border: none;
-    background-color: #F21137;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
+  width: 190px;
+  height: 50px;
+  border: none;
+  background-color: #f21137;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
 }

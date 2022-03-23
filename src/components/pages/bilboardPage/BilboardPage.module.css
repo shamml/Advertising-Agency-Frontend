@@ -8,9 +8,9 @@
 
 .box {
   position: relative;
-  overflow:hidden;
-  width:350px;
-  height:400px;
+  overflow: hidden;
+  width: 350px;
+  height: 400px;
 }
 .sides {
   display: flex;
@@ -24,21 +24,21 @@
   display: flex;
   justify-content: space-between;
 }
-input[type="checkbox"] {
+input[type='checkbox'] {
   width: 20px;
   height: 20px;
   margin-left: 10px;
 }
 .billboardCard {
   border: 2px solid black;
-  margin:20px 20px;
+  margin: 20px 20px;
 }
 .box img {
   position: absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:350px;
-  height:400px;
-  object-fit:cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 400px;
+  object-fit: cover;
 }
