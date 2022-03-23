@@ -9,6 +9,7 @@ import './styles.css';
 import BilboardPage from './pages/BilboardPage/BilboardPage';
 import StFormatPage from './pages/STFormatPage/STFormatPage';
 import { useSelector } from 'react-redux';
+import ReviewPage from './pages/ReviewPage/ReviewPage';
 
 const App = () => {
   const token = useSelector((state) => state.application.token);
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/bilboard" element={<BilboardPage />} />
         <Route path="/STFormat" element={<StFormatPage />} />
+        <Route path='/reviews' element={<ReviewPage />} />
       </Routes>
       <Footer />
     </div>

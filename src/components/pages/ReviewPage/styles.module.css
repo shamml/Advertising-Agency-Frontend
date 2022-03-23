@@ -1,0 +1,73 @@
+.containerReview {
+  width: 700px;
+  height: 700px;
+  margin: 50px auto;
+}
+
+.containerReview input {
+  width: 650px;
+  margin: 10px 25px;
+}
+
+.containerReview button {
+  margin: 20px 25px;
+  border: none;
+  background-color: #f21137;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  height: 40px;
+  width: 130px;
+  cursor: pointer;
+}
+
+.containerReview button:disabled {
+  opacity: 0.5;
+}
+
+.oneWordReview {
+  outline: none;
+}
+
+.containerReview p {
+  font-size: 18px;
+  margin: 5px 25px;
+}
+
+.containerReview span {
+  margin: 20px 25px;
+  font-size: 18px;
+}
+
+.textReview {
+  height: 350px;
+}
+
+.recInp {
+  width: 700px;
+  margin: 10px 0 0;
+}
+.recInp span {
+  font-size: 20px;
+}
+
+.recInp input {
+  width: auto;
+  display: block;
+}
+
+.yes {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.no {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type='radio']:checked + label {
+  color: #f21137;
+}
