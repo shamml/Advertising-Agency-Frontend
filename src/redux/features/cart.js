@@ -98,6 +98,7 @@ export const fetchRents = (id) => {
       });
 
       const json = await res.json();
+
       console.log(json);
 
       if (json.error) {
