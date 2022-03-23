@@ -1,18 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../../redux/features/cart';
+import { addBillboardToCart } from '../../../redux/features/cart';
 import styles from './BilboardPage.module.css';
 
 const BilboardCard = ({ billboard }) => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.application.id);
 
-  const handleAddProd = (id, billboard) => {
-    dispatch(addToCart(id, billboard));
+  const handleAddBillboard = (id, billboard) => {
+    dispatch(addBillboardToCart(id, billboard));
   };
-  // const getCurrentCart = () => {
-  //   dispatch(getThisCart(id));
-  // };
 
   return (
     <div className={styles.billboardCards}>
@@ -33,11 +30,10 @@ const BilboardCard = ({ billboard }) => {
           </div>
         </div>
         <div className={styles.orderBtn}>
-          <button onClick={() => handleAddProd(id, billboard)}>
+          <button onClick={() => handleAddBillboard(id, billboard)}>
             Оформить заказ
           </button>
         </div>
-        {/* <button onClick={getCurrentCart}>as</button> */}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSTFormat } from '../../../redux/features/stformat';
+import { getAllSTFormat } from '../../../redux/features/stformat';
 import STformatCard from './STformatCard';
 import styles from './STFormats.module.css';
 import LoadingContent from '../../ContentLoader/LoadingContent';
@@ -12,7 +12,7 @@ const StFormatPage = () => {
   const loading = useSelector((state) => state.stformat.loading);
 
   useEffect(() => {
-    dispatch(fetchSTFormat());
+    dispatch(getAllSTFormat());
   }, [dispatch]);
 
   if (loading) {

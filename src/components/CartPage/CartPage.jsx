@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from "./CartPage.module.css";
+import { useSelector } from 'react-redux'
 
 const CartPage = () => {
+
+  // const rents = useSelector(state => state.cart.rents)
 
   const rents = [
     {

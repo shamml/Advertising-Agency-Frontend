@@ -1,7 +1,7 @@
 const initialState = {
+  rents: [],
   error: null,
   loading: false,
-  items: [],
   loadingProduct: true,
 };
 
@@ -16,39 +16,57 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        items: action.payload,
+        rents: action.payload,
       };
     case 'cart/fetch-cart/rejected':
       return {
         ...state,
         loading: false,
-        items: [],
+        rents: [],
         error: action.error,
       };
-    case 'cart/patch/pending':
+    case 'STFormat/patch/pending':
       return {
         ...state,
         loadingProduct: true,
       };
-    case 'cart/patch/fulfilled':
+    case 'STFormat/patch/fulfilled':
       return {
         ...state,
         loadingProduct: false,
-        items: [...state.items, action.payload],
+        rents: [...state.items, action.payload],
       };
-    case 'cart/patch/rejected':
+    case 'STFormat/patch/rejected':
       return {
         ...state,
         loadingProduct: false,
-        items: [],
+        rents: [],
+        error: action.error,
+      };
+    case 'billboard/patch/pending':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'billboard/patch/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        rents: [...state.rent, action.payload],
+      };
+    case 'billboard/patch/rejected':
+      return {
+        ...state,
+        loading: false,
+        rents: [],
         error: action.error,
       };
     default:
       return state;
   }
-};
+}
 
-export const fetchCart = (id) => {
+export const fetchRents = (id) => {
   return async (dispatch) => {
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
@@ -76,10 +94,10 @@ export const fetchCart = (id) => {
   };
 };
 
-export const cartAddProduct = (id, STFormat) => {
-  console.log(STFormat)
+export const addSTFormatToCart = (id, STFormat) => {
+  console.log(STFormat);
   return async (dispatch) => {
-    dispatch({ type: 'cart/patch/pending' });
+    dispatch({ type: 'STFormat/patch/pending' });
     try {
       const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
         method: 'PATCH',
@@ -93,16 +111,48 @@ export const cartAddProduct = (id, STFormat) => {
       console.log(json);
 
       if (json.error) {
-      dispatch({
-          type: 'cart/patch/rejected',
+        dispatch({
+          type: 'STFormat/patch/rejected',
           error: 'При запросе на сервер произошла ошибка',
         });
       } else {
-        dispatch({ type: 'cart/patch/fulfilled', payload: json });
+        dispatch({ type: 'STFormat/patch/fulfilled', payload: json });
       }
     } catch (e) {
       console.log('ошибка');
-      dispatch({ type: 'cart/patch/rejected', error: e.toString() });
+      dispatch({ type: 'STFormat/patch/rejected', error: e.toString() });
+    }
+  };
+};
+export const addBillboardToCart = (id, billboard) => {
+  console.log(billboard);
+  return async (dispatch) => {
+    dispatch({ type: 'billboard/patch/pending' });
+    try {
+      const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ product: billboard }),
+      });
+      const json = await res.json();
+
+      console.log(json);
+
+      if (json.error) {
+        dispatch({
+          type: 'billboard/patch/rejected',
+          error: 'Ошибка при запросе',
+        });
+      } else {
+        dispatch({ type: 'billboard/patch/fulfilled', payload: json });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'billboard/patch/rejected',
+        error: e.toString(),
+      });
     }
   };
 };
