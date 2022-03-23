@@ -8,6 +8,7 @@ import SignupPage from './pages/Signup.Page/SignupPage';
 import "./styles.css"
 import BilboardPage from './pages/bilboardPage/BilboardPage';
 import StFormatPage from './pages/STFormatPage/STFormatPage'
+import ReviewPage from './pages/ReviewPage/ReviewPage';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/bilboard" element={<BilboardPage />}/>
         <Route path="/STFormat" element={<StFormatPage />} />
+        <Route path='/reviews' element={<ReviewPage />} />
       </Routes>
       <Footer />
     </div>
