@@ -78,7 +78,7 @@ export const fetchRents = (id) => {
 
       const json = await res.json();
 
-      console.log(json);
+      console.log(json.product);
 
       if (json.error) {
         dispatch({
