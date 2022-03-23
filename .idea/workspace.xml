@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffe79d55-e3dc-4efc-a778-77a9da5d2d6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormats.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STformatCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/features/stformat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ContentLoader/LoadingContent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ContentLoader/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatButtons.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/features/cart.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.prettierrc" afterDir="false" />
@@ -123,7 +123,11 @@
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormats.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormats.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/STFormatPage/STformatCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STformatCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/configureStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
@@ -733,6 +737,8 @@
       <updated>1647868801408</updated>
       <workItem from="1647868802937" duration="5458000" />
       <workItem from="1647934431284" duration="7665000" />
+      <workItem from="1647988257733" duration="7500000" />
+      <workItem from="1648019873389" duration="11658000" />
     </task>
     <servers />
   </component>
