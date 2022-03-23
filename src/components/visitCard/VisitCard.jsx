@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./VisitCard.module.css";
 import visitCardImage from '../../assets/visit-card.png';
+import { Link } from 'react-router-dom';
 
 function VisitCard(props) {
   return (
@@ -14,7 +15,9 @@ function VisitCard(props) {
             компании, частного лица. От выбора дизайна зависит впечатление,
             которое изделие произведет на партнера или клиента.
           </div>
-          <button className={styles.visitCardBtn}>Оформить заказ</button>
+          <Link to="/visitcard">
+            <button className={styles.visitCardBtn}>Купить</button>
+          </Link>
         </div>
         <img className={styles.visitCardImage} src={visitCardImage} alt="" />
       </div>
