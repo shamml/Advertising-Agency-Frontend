@@ -1,18 +1,11 @@
 header {
   width: 100%;
-  padding: 15px 90px;
+  padding: 25px 90px;
   display: flex;
-  background-color: #fff;
   justify-content: space-between;
   align-items: center;
-  /* position: fixed; */
 }
 
-/* .fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-} */
 
 .logoImage {
   width: 230px;
