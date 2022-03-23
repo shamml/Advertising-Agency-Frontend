@@ -1,8 +1,8 @@
 const initialState = {
-  items: [],
-  loading: false,
-  loadingProduct: false,
   error: null,
+  loading: false,
+  items: [],
+  loadingProduct: true,
 };
 
 export default function cart(state = initialState, action) {
@@ -46,7 +46,7 @@ export default function cart(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 export const fetchCart = (id) => {
   return async (dispatch) => {
@@ -88,13 +88,12 @@ export const cartAddProduct = (id, STFormat) => {
         },
         body: JSON.stringify({ product: STFormat }),
       });
-
       const json = await res.json();
 
       console.log(json);
 
       if (json.error) {
-        dispatch({
+      dispatch({
           type: 'cart/patch/rejected',
           error: 'При запросе на сервер произошла ошибка',
         });
