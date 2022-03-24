@@ -11,6 +11,7 @@ header {
 }
 
 nav {
+  position: relative;
   width: 160px;
   display: flex;
   justify-content: space-between;
@@ -24,7 +25,6 @@ nav {
   margin-right: 20px;
   cursor: pointer;
 }
-
 .signInBtn {
   width: 130px;
   height: 40px;
@@ -33,4 +33,18 @@ nav {
   color: white;
   cursor: pointer;
   border-radius: 5px;
+}
+.modal {
+  position: absolute;
+  top: 40px;
+  left:20px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 350px;
+  z-index: 1;
+  border: 2px solid black;
+}
+.modal p {
+  color: black;
+  border-bottom: 1px solid black;
 }

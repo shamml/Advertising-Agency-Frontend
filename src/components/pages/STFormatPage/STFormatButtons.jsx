@@ -17,8 +17,8 @@ const StFormatButtons = ({ STFormat }) => {
       <button onClick={() => handleAddProduct(id, STFormat)}>
         {' '}
         {!STFormat.sideA && !STFormat.sideA
-          ? 'Дабавлено в корзину'
-          : 'Добавить в корзину'}
+          ? 'Оформить заказ'
+          : 'Оформить заказ'}
       </button>
     </div>
   );
