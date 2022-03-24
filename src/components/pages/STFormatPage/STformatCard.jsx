@@ -5,8 +5,17 @@ import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
 import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
+import { useDispatch } from 'react-redux'
+import { editCheckboxSideB } from '../../../redux/features/stformat'
 
 const STformatCard = ({ STFormat }) => {
+  const dispatch = useDispatch()
+
+  const handleCheckedSideB = (id, sideB) => {
+    console.log(id)
+    dispatch(editCheckboxSideB(id, sideB))
+  }
+
   return (
     <div className={styles.STFormatCard}>
       <div className={styles.STFormat}>
@@ -29,9 +38,13 @@ const STformatCard = ({ STFormat }) => {
           <div>
             sideB:{' '}
             {STFormat.sideB ? (
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={STFormat.sideB}
+                onChange={() => handleCheckedSideB(STFormat._id, STFormat.sideB)}
+              />
             ) : (
-              <input type="checkbox" disabled={true} />
+              <input type="checkbox" />
             )}
           </div>
         </div>

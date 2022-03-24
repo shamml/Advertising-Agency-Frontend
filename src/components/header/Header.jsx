@@ -50,7 +50,7 @@ const Header = () => {
         <a>Контакты</a>
       </nav>
       <Link to="/cartpage">
-        <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
+        <img className={styles.cartIcon} src={cartIcon} alt="carticon"/>
       </Link>
       <Link to="/signin">
         <button className={styles.signInBtn}>
