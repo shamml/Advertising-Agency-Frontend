@@ -3,6 +3,7 @@ const initialState = {
     rents: [],
     sales: []
   },
+  total: 0,
   error: null,
   loading: false,
   loadingProduct: true,
@@ -20,18 +21,14 @@ export default function cart(state = initialState, action) {
         ...state,
         loading: false,
         products: {
-          ...state.products,
-          rents: action.payload,
-        },
+          rents: action.payload.product.rents,
+          sales: action.payload.product.sales,
+        } 
       };
     case 'cart/fetch-cart/rejected':
       return {
         ...state,
         loading: false,
-        products: {
-          ...state.products,
-          rents: [],
-        },
         error: action.error,
       };
     case 'STFormat/patch/pending':
@@ -82,23 +79,49 @@ export default function cart(state = initialState, action) {
         },
         error: action.error,
       };
+
+      case 'visitcards/patch/pending':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'visitcards/patch/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        products: {
+          ...state.products,
+          sales: [...state.products.sales, action.payload.product.sales]
+        },
+      };
+    case 'visitcards/patch/rejected':
+      return {
+        ...state,
+        loading: false,
+        products: {
+          ...state.products,
+          sales: [],
+        },
+        error: action.error,
+      };
     default:
       return state;
   }
 }
 
-export const fetchRents = (id) => {
-  return async (dispatch) => {
+export const fetchRents = () => {
+  return async (dispatch, getState) => {
+    const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/${id}`, {
+      const res = await fetch(`http://localhost:3030/cart/${state.application.token}`, {
         headers: {
           'Content-type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`
         },
       });
 
       const json = await res.json();
-      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -106,7 +129,7 @@ export const fetchRents = (id) => {
           error: 'При запросе на сервер произошла ошибка',
         });
       } else {
-        dispatch({ type: 'cart/fetch-cart/fulfilled', payload: json.product });
+        dispatch({ type: 'cart/fetch-cart/fulfilled', payload: json });
       }
     } catch (e) {
       dispatch({ type: 'cart/fetch-cart/rejected', error: e.toString() });
@@ -115,7 +138,6 @@ export const fetchRents = (id) => {
 };
 
 export const addSTFormatToCart = (id, STFormat) => {
-  console.log(STFormat);
   return async (dispatch) => {
     dispatch({ type: 'STFormat/patch/pending' });
     try {
@@ -127,8 +149,6 @@ export const addSTFormatToCart = (id, STFormat) => {
         body: JSON.stringify({ product: STFormat }),
       });
       const json = await res.json();
-
-      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -179,30 +199,64 @@ export const addBillboardToCart = (id, billboard) => {
   };
 };
 
-export const addVisitCardToCart = (id) => {
-  return async (dispatch) => {
-    dispatch({ type: 'billboard/patch/pending' });
+export const addVisitCardToCart = (paper, count, delivery, price) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    console.log(state.application.token);
+    dispatch({ type: 'visitcards/patch/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
-        method: 'PATCH',
+      const res = await fetch("http://localhost:3030/visitcard", {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`
         },
-        body: JSON.stringify({  }),
+        body: JSON.stringify({ typePaper: paper, count: count, delivery: delivery, price: price }),
       });
       const json = await res.json();
 
       if (json.error) {
         dispatch({
-          type: 'billboard/patch/rejected',
+          type: 'visitcards/patch/rejected',
           error: 'Ошибка при запросе',
         });
       } else {
-        dispatch({ type: 'billboard/patch/fulfilled', payload: json });
+        dispatch({ type: 'visitcards/patch/fulfilled', payload: json });
       }
     } catch (e) {
       dispatch({
-        type: 'billboard/patch/rejected',
+        type: 'visitcards/patch/rejected',
+        error: e.toString(),
+      });
+    }
+  };
+};
+
+export const deleteVisitCard = (id) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    dispatch({ type: 'visitcards/delete/pending' });
+    try {
+      const res = await fetch(`http://localhost:3030/visitcard/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`
+        },
+      });
+      const json = await res.json();
+
+      if (json.error) {
+        dispatch({
+          type: 'visitcards/delete/rejected',
+          error: 'Ошибка при запросе',
+        });
+      } else {
+        dispatch({ type: 'visitcards/delete/fulfilled', payload: json });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'visitcards/delete/rejected',
         error: e.toString(),
       });
     }
