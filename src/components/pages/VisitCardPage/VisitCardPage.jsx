@@ -90,7 +90,7 @@ const VisitCardPage = () => {
           <label htmlFor="deliv">Доставка (500р)</label> <br />
           <button className={styles.visitCardBtn} onClick={handleClickAddToCart}>Добавить в корзину</button>
         </div>
-        <div className={styles.price}>{}</div>
+        <div className={styles.price}>{price}₽</div>
       </div>
     </div>
   );

@@ -32,3 +32,10 @@
   margin: 0;
   font-size: 18px;
 }
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}

@@ -16,7 +16,7 @@ import ReviewPage from './pages/ReviewPage/ReviewPage';
 const App = () => {
   const token = useSelector((state) => state.application.token);
   return token ? (
-    <div>
+    <div className='app'>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
