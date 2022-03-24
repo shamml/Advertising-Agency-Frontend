@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBillboardToCart } from '../../../redux/features/cart';
 import styles from './BilboardPage.module.css';
@@ -6,15 +6,39 @@ import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
+import {
+  patchSideABillboard,
+  patchSideBBillboard,
+} from '../../../redux/features/bilboard';
 
 const BilboardCard = ({ billboard }) => {
+  const [sideA, setSideA] = useState(false);
+  const [sideB, setSideB] = useState(true);
+
   const dispatch = useDispatch();
 
   const id = useSelector((state) => state.application.id);
-  // const token = useSelector((state) => state.application.token);
 
-  const handleAddBillboard = (id, billboard) => {
-    dispatch(addBillboardToCart(id, billboard));
+  const handleAddBillboard = (id) => {
+    dispatch(addBillboardToCart(id, sideA, sideB));
+  };
+
+  const handleClickPatchSideA = (e) => {
+    setSideA(!sideA);
+  };
+
+  const patchSideAlphaBillboard = () => {
+    dispatch(patchSideABillboard(id, sideA));
+  };
+
+  const patchSideBetaBillboard = (id) => {
+    dispatch(patchSideBBillboard(id, sideB));
+  };
+
+  console.log(sideA, sideB);
+
+  const handleClickPatchSideB = (e) => {
+    setSideB(!sideB);
   };
 
   return (
@@ -36,7 +60,13 @@ const BilboardCard = ({ billboard }) => {
             <CgSidebar />
             sideA:{' '}
             {billboard.sideA ? (
-              <input type="checkbox" />
+              <input
+                onClick={() => patchSideAlphaBillboard(billboard._id)}
+                value={sideA}
+                onChange={handleClickPatchSideA}
+                type="checkbox"
+                checked={billboard.sideA}
+              />
             ) : (
               <input type="checkbox" disabled={true} />
             )}
@@ -48,14 +78,20 @@ const BilboardCard = ({ billboard }) => {
             <div>
               sideB:{' '}
               {billboard.sideB ? (
-                <input type="checkbox" />
+                <input
+                  checked={billboard.sideB}
+                  onClick={() => patchSideBetaBillboard(billboard._id)}
+                  type="checkbox"
+                  value={sideB}
+                  onChange={handleClickPatchSideB}
+                />
               ) : (
                 <input type="checkbox" disabled={true} />
               )}
             </div>
           </div>
           <div className={styles.orderBtn}>
-            <button onClick={() => handleAddBillboard(id, billboard)}>
+            <button onClick={() => handleAddBillboard(billboard._id)}>
               Оформить заказ
             </button>
           </div>

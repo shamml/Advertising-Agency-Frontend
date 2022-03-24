@@ -1,7 +1,7 @@
 const initialState = {
   products: {
     rents: [],
-    sales: []
+    sales: [],
   },
   total: 0,
   error: null,
@@ -165,22 +165,31 @@ export const addSTFormatToCart = (id, STFormat) => {
   };
 };
 
-export const addBillboardToCart = (id, billboard) => {
+export const addBillboardToCart = (id, sideA, sideB) => {
+  console.log(id);
+  console.log(sideA)
+  console.log(sideB)
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'billboard/patch/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
-        method: 'PATCH',
-        headers: {
-          Authorization: `Bearer ${state.application.token}`,
-          'Content-Type': 'application/json',
+      const res = await fetch(
+        `http://localhost:3030/cart/billboard/${id}/rents`,
+        {
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${state.application.token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            sideA: sideA,
+            sideB: sideB,
+          }),
         },
-        body: JSON.stringify({ product: billboard }),
-      });
+      );
       const json = await res.json();
 
-      console.log(json.product.rents);
+      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -205,7 +214,7 @@ export const addVisitCardToCart = (paper, count, delivery, price) => {
     console.log(state.application.token);
     dispatch({ type: 'visitcards/patch/pending' });
     try {
-      const res = await fetch("http://localhost:3030/visitcard", {
+      const res = await fetch(`http://localhost:3030/visitcard/${state.application.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
