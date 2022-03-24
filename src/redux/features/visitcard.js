@@ -11,7 +11,7 @@ export default function visitCards(state = initialState, action) {
   }
 }
 
-export const addVisitCard = (paper, count, delivery) => {
+export const addVisitCard = (paper, count, delivery, price) => {
   return async (dispatch, ) => {
     dispatch({ type: "visit/add/pending"});
 
@@ -20,8 +20,8 @@ export const addVisitCard = (paper, count, delivery) => {
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ typePaper: paper, count: count, delivery: delivery }), 
-    })
+      body: JSON.stringify({ typePaper: paper, count: count, delivery: delivery, price: price }), 
+    });
 
     const visitCard = res.json();
 

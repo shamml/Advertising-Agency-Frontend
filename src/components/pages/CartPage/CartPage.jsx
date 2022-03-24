@@ -1,24 +1,29 @@
-import React, { useEffect } from 'react';
+import {React, useEffect} from 'react';
 import styles from './CartPage.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRents } from '../../../redux/features/cart';
+import { deleteVisitCard, fetchRents } from '../../../redux/features/cart';
 
 const CartPage = () => {
   const dispatch = useDispatch();
-
-  const rents = useSelector(state => state.cart.products.rents);
   const sales = useSelector(state => state.cart.products.sales);
-  const userId = useSelector(state => state.application.id)
+  const loading = useSelector(state => state.cart.loading);
 
-  console.log(rents);
   useEffect(() => {
-    dispatch(fetchRents(userId));
-  }, [dispatch]);
+    dispatch(fetchRents())
+  }, [dispatch])
+
+  const handleDeleteVisiCard = (id) => {
+    dispatch(deleteVisitCard(id))
+  }
+
+  if(loading) {
+    return <div>loading...</div>
+  }
 
   return (
     <div className={styles.cartPage}>
       <div className={styles.cartBlock}>
-        {rents.map((rent) => {
+        {/* {rents.map((rent) => {
           return (
             <div className={styles.rent}>
               <div>{rent.image}</div>
@@ -30,10 +35,10 @@ const CartPage = () => {
               <div>{rent.price}</div>
             </div>
           );
-        })}
+        })} */}
         {sales.map((sale) => {
           return (
-            <div className={styles.sale}>
+            <div key={sale._id} className={styles.sale}>
               <div>
                 <img src="/" alt="visitcard" />
               </div>
@@ -41,6 +46,7 @@ const CartPage = () => {
               <div>{sale.typePaper}</div>
               <div>{sale.count}</div>
               <div>{sale.price}</div>
+              <button onClick={() => handleDeleteVisiCard(sale._id)}>Убрать из корзины</button>
             </div>
           );
         })}
