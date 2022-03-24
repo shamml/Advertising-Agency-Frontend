@@ -2,6 +2,9 @@ import {React, useEffect} from 'react';
 import styles from './CartPage.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteVisitCard, fetchRents } from '../../../redux/features/cart';
+import plain from "../../../assets/plain.jpg";
+import touch from "../../../assets/touch.jpg";
+import { renderMatches } from 'react-router-dom';
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -20,9 +23,10 @@ const CartPage = () => {
     return <div>loading...</div>
   }
 
+
   return (
     <div className={styles.cartPage}>
-      <div className={styles.cartBlock}>
+      {(!!sales.length) ? <div className={styles.cartBlock}>
         {/* {rents.map((rent) => {
           return (
             <div className={styles.rent}>
@@ -38,20 +42,20 @@ const CartPage = () => {
         })} */}
         {sales.map((sale) => {
           return (
-            <div key={sale._id} className={styles.sale}>
-              <div>
-                <img src="/" alt="visitcard" />
+            <div key={sale._id} className={styles.item}>
+              <div className={styles.item1}>
+                {sale.typePaper === 1 ? <img src={plain} alt="visitcard" /> : <img src={touch} alt="visitcard" />}
               </div>
-              <div>{sale.name}</div>
-              <div>{sale.typePaper}</div>
-              <div>{sale.count}</div>
-              <div>{sale.price}</div>
-              <button onClick={() => handleDeleteVisiCard(sale._id)}>Убрать из корзины</button>
+              <div className={styles.item2}>{sale.name}</div>
+              <div className={styles.item3}>{sale.typePaper === 1 ? "Меловка" : "TouchCover"}</div>
+              <div className={styles.item4}>{sale.count}шт</div>
+              <div className={styles.item5}>{sale.price}₽</div>
+              <button onClick={() => handleDeleteVisiCard(sale._id)}>×</button>
             </div>
           );
         })}
-      </div>
-      <button>Оформить заказ</button>
+        <button className={styles.orderBtn}>Оформить заказ</button>
+      </div> : <div className={styles.emptyCart}>В корзине нет товаров</div>}
     </div>
   );
 };
