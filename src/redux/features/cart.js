@@ -156,10 +156,13 @@ export const fetchRents = () => {
     const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/user`, {
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`,
+      const res = await fetch(
+        'http://localhost:3030/cart/user',
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
         },
       });
 
@@ -179,19 +182,25 @@ export const fetchRents = () => {
   };
 };
 
-export const addSTFormatToCart = (id, STFormat) => {
-  return async (dispatch) => {
+export const addSTFormatToCart = (id, sideA, sideB) => {
+  return async (dispatch, getSate) => {
+    const state = getSate()
     dispatch({ type: 'STFormat/patch/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
+      const res = await fetch(`http://localhost:3030/cart/stFormat/${id}/rents`, {
         method: 'PATCH',
         headers: {
           'Content-type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`
         },
-        body: JSON.stringify({ product: STFormat }),
+        body: JSON.stringify({
+          sideA: sideA,
+          sideB: sideB,
+        }),
       });
       const json = await res.json();
 
+      console.log(json)
       if (json.error) {
         dispatch({
           type: 'STFormat/patch/rejected',

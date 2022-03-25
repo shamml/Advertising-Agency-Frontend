@@ -15,10 +15,10 @@ const BilboardCard = ({ billboard }) => {
   const [sideA, setSideA] = useState(false);
   const [sideB, setSideB] = useState(false);
 
-  
+
   const id = useSelector((state) => state.application.id);
-  // const cart = useSelector((state) => state.cart.products.rents);
-  // console.log(cart);
+  const cart = useSelector((state) => state.cart.products.rents);
+  console.log(cart);
 
 // const isCartItems = cart.some((item) => item._id === billboard._id);
   const dispatch = useDispatch();

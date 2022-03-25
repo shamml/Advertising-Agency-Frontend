@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './STFormats.module.css';
 import StFormatButtons from './STFormatButtons';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
 import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
-import { useDispatch } from 'react-redux'
-import { editCheckboxSideB } from '../../../redux/features/stformat'
 
 const STformatCard = ({ STFormat }) => {
-  const dispatch = useDispatch()
 
-  const handleCheckedSideB = (id, sideB) => {
-    console.log(id)
-    dispatch(editCheckboxSideB(id, sideB))
-  }
+  const [sideA, setSideA] = useState(false);
+  const [sideB, setSideB] = useState(false);
+  console.log(`sideA: ${sideA} sideB ${sideB}`)
+
+  const handleClickPatchSideA = () => {
+    setSideA(!sideA);
+  };
+
+  const handleClickPatchSideB = () => {
+    setSideB(!sideB);
+  };
 
   return (
     <div className={styles.STFormatCard}>
@@ -26,7 +30,11 @@ const STformatCard = ({ STFormat }) => {
           <CgSidebar />
           sideA:{' '}
           {STFormat.sideA ? (
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={handleClickPatchSideA}
+              value={sideA}
+            />
           ) : (
             <input type="checkbox" disabled={true} />
           )}
@@ -40,11 +48,11 @@ const STformatCard = ({ STFormat }) => {
             {STFormat.sideB ? (
               <input
                 type="checkbox"
-                checked={STFormat.sideB}
-                onChange={() => handleCheckedSideB(STFormat._id, STFormat.sideB)}
+                onChange={handleClickPatchSideB}
+                value={sideB}
               />
             ) : (
-              <input type="checkbox" />
+              <input type="checkbox" disabled={true} />
             )}
           </div>
         </div>
@@ -56,7 +64,7 @@ const STformatCard = ({ STFormat }) => {
           {' '}
           <GrLocation /> {STFormat.address}
         </div>
-        <StFormatButtons STFormat={STFormat} />
+        <StFormatButtons STFormat={STFormat} sideA={sideA} sideB={sideB} />
       </div>
     </div>
   );

@@ -79,35 +79,35 @@ export const getAllSTFormat = () => {
     }
   };
 };
-export const editCheckboxSideB = (id, sideB) => {
-  console.log(sideB)
-  return async (dispatch) => {
-    dispatch({ type: 'check/patch/pending' });
-    try {
-      const res = await fetch(`http://localhost:3030/stFormat/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({ sideB: !sideB }),
-      });
-      const json = await res.json();
-
-      console.log(json);
-
-      if (json.error) {
-        dispatch({
-          type: 'check/patch/rejected',
-          error: 'При запросе на сервер произошла ошибка',
-        });
-      } else {
-        dispatch({ type: 'check/patch/fulfilled', payload: json });
-      }
-    } catch (e) {
-      dispatch({
-        type: 'check/patch/rejected',
-        error: e.toString(),
-      });
-    }
-  };
-};
+// export const editCheckboxSideB = (id, sideB) => {
+//   console.log(sideB)
+//   return async (dispatch) => {
+//     dispatch({ type: 'check/patch/pending' });
+//     try {
+//       const res = await fetch(`http://localhost:3030/stFormat/${id}`, {
+//         method: 'PATCH',
+//         headers: {
+//           'Content-type': 'application/json'
+//         },
+//         body: JSON.stringify({ sideB: !sideB }),
+//       });
+//       const json = await res.json();
+//
+//       console.log(json);
+//
+//       if (json.error) {
+//         dispatch({
+//           type: 'check/patch/rejected',
+//           error: 'При запросе на сервер произошла ошибка',
+//         });
+//       } else {
+//         dispatch({ type: 'check/patch/fulfilled', payload: json });
+//       }
+//     } catch (e) {
+//       dispatch({
+//         type: 'check/patch/rejected',
+//         error: e.toString(),
+//       });
+//     }
+//   };
+// };
