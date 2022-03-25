@@ -27,6 +27,9 @@ const CartPage = () => {
   if (loading) {
     return <div>loading...</div>;
   }
+  const handleClickDelete = () => {
+    dispatch()
+  }
 
   return (
     <div className={styles.cartPage}>
@@ -42,6 +45,9 @@ const CartPage = () => {
               {rent.sideA && !rent.sideB && <div>Сторона А</div>}
               {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
               <div>{rent.price}</div>
+              <div>
+                <button onClick={handleClickDelete}>x</button>
+              </div>
             </div>
           );
         })}

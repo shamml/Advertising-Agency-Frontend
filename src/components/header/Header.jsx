@@ -10,31 +10,33 @@ import HeaderModal from './HeaderModal';
 const Header = () => {
   const dispatch = useDispatch();
 
-  const [ contacts, setContacts ] = useState(false)
+  const [contacts, setContacts] = useState(false);
 
   const exit = () => {
     dispatch(logOut());
   };
 
   const check = () => {
-    setContacts(!contacts)
-  }
+    setContacts(!contacts);
+  };
 
   const closeModal = () => {
-    setContacts(false)
-  }
+    setContacts(false);
+  };
 
   const token = useSelector((state) => state.application.token);
-  
+
   return token ? (
     <header>
       <Link to="/">
         <img className={styles.logoImage} src={logo} alt="pictur" />
       </Link>
       <nav>
-        <a>О нас</a>
+        <Link to="/reviews">
+          <a>О нас</a>
+        </Link>
         <a onClick={check}>Контакты</a>
-        {contacts ?  <HeaderModal /> : ""}
+        {contacts ? <HeaderModal /> : ''}
       </nav>
       <Link to="/cartpage">
         <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
@@ -53,15 +55,13 @@ const Header = () => {
       <nav>
         <a>О нас</a>
         <a onClick={check}>Контакты</a>
-        {contacts ?  <HeaderModal /> : ""}
+        {contacts ? <HeaderModal /> : ''}
       </nav>
       <Link to="/cartpage">
-        <img className={styles.cartIcon} src={cartIcon} alt="carticon"/>
+        <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
       </Link>
       <Link to="/signin">
-        <button className={styles.signInBtn}>
-          Войти
-        </button>
+        <button className={styles.signInBtn}>Войти</button>
       </Link>
     </header>
   );
