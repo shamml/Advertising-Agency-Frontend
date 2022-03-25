@@ -30,9 +30,9 @@ const CartPage = () => {
 
   return (
     <div className={styles.cartPage}>
-      {!!sales.length ? (
+      {!!sales.length || !!rents.length ? (
         <div className={styles.cartBlock}>
-          {/* {rents.map((rent) => {
+           {rents.map((rent) => {
           return (
             <div className={styles.rent}>
               <div>{rent.image}</div>
@@ -44,7 +44,7 @@ const CartPage = () => {
               <div>{rent.price}</div>
             </div>
           );
-        })} */}
+        })}
           {sales.map((sale) => {
             return (
               <>
@@ -67,27 +67,6 @@ const CartPage = () => {
                   </button>
                 </div>
               </>
-            );
-          })}
-          <button className={styles.orderBtn}>Оформить заказ</button>
-              <div key={sale._id} className={loadingProduct ? `${styles.item} ${styles.deleting}` : styles.item}>
-                <div className={styles.item1}>
-                  {sale.typePaper === 1 ? (
-                    <img src={plain} alt="visitcard" />
-                  ) : (
-                    <img src={touch} alt="visitcard" />
-                  )}
-                </div>
-                <div className={styles.item2}>{sale.name}</div>
-                <div className={styles.item3}>
-                  {sale.typePaper === 1 ? 'Меловка' : 'TouchCover'}
-                </div>
-                <div className={styles.item4}>{sale.count}шт</div>
-                <div className={styles.item5}>{sale.price}₽</div>
-                <button onClick={() => handleDeleteVisiCard(sale._id)}>
-                  ×
-                </button>
-              </div>
             );
           })}
           <div className={styles.total}>
