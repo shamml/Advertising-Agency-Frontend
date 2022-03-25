@@ -12,6 +12,9 @@ const CartPage = () => {
   const loading = useSelector((state) => state.cart.loading);
   const rents = useSelector((state) => state.cart.products.rents);
   console.log(rents);
+ 
+  const total = useSelector((state) => state.cart.total);
+  const loadingProduct = useSelector(state => state.cart.loadingProduct);
 
   useEffect(() => {
     dispatch(fetchRents());
@@ -67,6 +70,30 @@ const CartPage = () => {
             );
           })}
           <button className={styles.orderBtn}>Оформить заказ</button>
+              <div key={sale._id} className={loadingProduct ? `${styles.item} ${styles.deleting}` : styles.item}>
+                <div className={styles.item1}>
+                  {sale.typePaper === 1 ? (
+                    <img src={plain} alt="visitcard" />
+                  ) : (
+                    <img src={touch} alt="visitcard" />
+                  )}
+                </div>
+                <div className={styles.item2}>{sale.name}</div>
+                <div className={styles.item3}>
+                  {sale.typePaper === 1 ? 'Меловка' : 'TouchCover'}
+                </div>
+                <div className={styles.item4}>{sale.count}шт</div>
+                <div className={styles.item5}>{sale.price}₽</div>
+                <button onClick={() => handleDeleteVisiCard(sale._id)}>
+                  ×
+                </button>
+              </div>
+            );
+          })}
+          <div className={styles.total}>
+            <button className={styles.orderBtn}>Оформить заказ</button>
+            <div>Итого: {total}₽</div>
+          </div>
         </div>
       ) : (
         <div className={styles.emptyCart}>В корзине нет товаров</div>
