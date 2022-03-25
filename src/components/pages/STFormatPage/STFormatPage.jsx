@@ -6,6 +6,13 @@ import styles from './STFormats.module.css';
 import LoadingContent from '../../ContentLoader/LoadingContent';
 
 const StFormatPage = () => {
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+
   const dispatch = useDispatch();
 
   const STFormats = useSelector((state) => state.stformat.items);
