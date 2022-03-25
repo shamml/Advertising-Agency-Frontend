@@ -24,7 +24,7 @@ export default function cart(state = initialState, action) {
           rents: action.payload.product.rents,
           sales: action.payload.product.sales,
         },
-        total: action.payload.total
+        total: action.payload.total,
       };
     case 'cart/fetch-cart/rejected':
       return {
@@ -131,19 +131,19 @@ export default function cart(state = initialState, action) {
         loading: false,
         products: {
           ...state.products,
-          sales: state.products.sales.filter(sale => {
-            return sale._id !== action.payload._id
-          })
+          sales: state.products.sales.filter((sale) => {
+            return sale._id !== action.payload._id;
+          }),
         },
         total: state.total - action.payload.price,
-        loadingProduct: false
-      }
+        loadingProduct: false,
+      };
     case 'visitcards/delete/rejected':
       return {
         ...state,
         loading: false,
         error: action.error,
-        loadingProduct: false
+        loadingProduct: false,
       };
 
     default:
@@ -156,15 +156,14 @@ export const fetchRents = () => {
     const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch(
-        `http://localhost:3030/cart/user`,
+      const res = await fetch('http://localhost:3030/cart/user',
         {
           headers: {
             'Content-type': 'application/json',
             Authorization: `Bearer ${state.application.token}`,
           },
         },
-      );
+      });
 
       const json = await res.json();
 
@@ -182,19 +181,25 @@ export const fetchRents = () => {
   };
 };
 
-export const addSTFormatToCart = (id, STFormat) => {
-  return async (dispatch) => {
+export const addSTFormatToCart = (id, sideA, sideB) => {
+  return async (dispatch, getSate) => {
+    const state = getSate()
     dispatch({ type: 'STFormat/patch/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/product/${id}`, {
+      const res = await fetch(`http://localhost:3030/cart/stFormat/${id}/rents`, {
         method: 'PATCH',
         headers: {
           'Content-type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`
         },
-        body: JSON.stringify({ product: STFormat }),
+        body: JSON.stringify({
+          sideA: sideA,
+          sideB: sideB,
+        }),
       });
       const json = await res.json();
 
+      console.log(json)
       if (json.error) {
         dispatch({
           type: 'STFormat/patch/rejected',
@@ -319,5 +324,22 @@ export const deleteVisitCard = (id) => {
         error: e.toString(),
       });
     }
+  };
+};
+
+export const deleteBillboard = () => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    dispatch({ type: 'billboard/delete/pending' });
+    try {
+      const res = await fetch(``, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`,
+        },
+      });
+      const json = await res.json();
+    } catch (e) {}
   };
 };

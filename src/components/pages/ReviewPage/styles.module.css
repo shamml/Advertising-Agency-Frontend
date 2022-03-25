@@ -71,3 +71,6 @@
 input[type='radio']:checked + label {
   color: #f21137;
 }
+input[type="text"] {
+  outline: none;
+}

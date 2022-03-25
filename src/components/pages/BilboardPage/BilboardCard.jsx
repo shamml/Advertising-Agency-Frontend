@@ -13,12 +13,12 @@ import {
 
 const BilboardCard = ({ billboard }) => {
   const [sideA, setSideA] = useState(false);
-  const [sideB, setSideB] = useState(true);
+  const [sideB, setSideB] = useState(false);
 
-  
+
   const id = useSelector((state) => state.application.id);
-  // const cart = useSelector((state) => state.cart.products.rents);
-  // console.log(cart);
+  const cart = useSelector((state) => state.cart.products.rents);
+  console.log(cart);
 
 // const isCartItems = cart.some((item) => item._id === billboard._id);
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const BilboardCard = ({ billboard }) => {
                 value={sideA}
                 onChange={handleClickPatchSideA}
                 type="checkbox"
-                checked={billboard.sideA}
+                // checked={billboard.sideA}
               />
             ) : (
               <input type="checkbox" disabled={true} />
@@ -83,7 +83,7 @@ const BilboardCard = ({ billboard }) => {
               sideB:{' '}
               {billboard.sideB ? (
                 <input
-                  checked={billboard.sideB}
+                  // checked={billboard.sideB}
                   onClick={() => patchSideBetaBillboard(billboard._id)}
                   type="checkbox"
                   value={sideB}

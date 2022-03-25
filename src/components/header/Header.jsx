@@ -20,7 +20,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const [ contacts, setContacts ] = useState(false)
+  const [contacts, setContacts] = useState(false);
 
   const exit = () => {
     dispatch(logOut());
@@ -28,19 +28,21 @@ const Header = () => {
 
   const check = () => {
     setContacts(!contacts)
-  }
+  };
 
   const token = useSelector((state) => state.application.token);
-  
+
   return token ? (
     <header className={ scroll ? styles.fixed : ""}>
       <Link to="/">
         <img className={styles.logoImage} src={logo} alt="pictur" />
       </Link>
       <nav>
-        <a>О нас</a>
+        <Link to="/reviews">
+          <a>О нас</a>
+        </Link>
         <a onClick={check}>Контакты</a>
-        {contacts ?  <HeaderModal /> : ""}
+        {contacts ? <HeaderModal /> : ''}
       </nav>
       <Link to="/cartpage">
         <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
@@ -59,15 +61,13 @@ const Header = () => {
       <nav>
         <a>О нас</a>
         <a onClick={check}>Контакты</a>
-        {contacts ?  <HeaderModal /> : ""}
+        {contacts ? <HeaderModal /> : ''}
       </nav>
       <Link to="/cartpage">
-        <img className={styles.cartIcon} src={cartIcon} alt="carticon"/>
+        <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
       </Link>
       <Link to="/signin">
-        <button className={styles.signInBtn}>
-          Войти
-        </button>
+        <button className={styles.signInBtn}>Войти</button>
       </Link>
     </header>
   );
