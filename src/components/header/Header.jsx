@@ -19,6 +19,11 @@ const Header = () => {
   const check = () => {
     setContacts(!contacts)
   }
+
+  const closeModal = () => {
+    setContacts(false)
+  }
+
   const token = useSelector((state) => state.application.token);
   
   return token ? (
@@ -47,7 +52,8 @@ const Header = () => {
       </Link>
       <nav>
         <a>О нас</a>
-        <a>Контакты</a>
+        <a onClick={check}>Контакты</a>
+        {contacts ?  <HeaderModal /> : ""}
       </nav>
       <Link to="/cartpage">
         <img className={styles.cartIcon} src={cartIcon} alt="carticon"/>

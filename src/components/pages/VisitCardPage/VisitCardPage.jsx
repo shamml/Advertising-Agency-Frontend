@@ -36,12 +36,10 @@ const VisitCardPage = () => {
   if (delivery) {
     price = price + 500
   }
-  
-
-  console.log(price);
 
   const handleClickAddToCart = () => {
     dispatch(addVisitCardToCart(paper, count, delivery, price));
+    
   };
   
   return (
