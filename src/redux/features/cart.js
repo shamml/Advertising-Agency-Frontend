@@ -23,7 +23,7 @@ export default function cart(state = initialState, action) {
         products: {
           rents: action.payload.product.rents,
           sales: action.payload.product.sales,
-        } 
+        },
       };
     case 'cart/fetch-cart/rejected':
       return {
@@ -79,8 +79,32 @@ export default function cart(state = initialState, action) {
         },
         error: action.error,
       };
+    // case 'billboard/add/pending':
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //   };
+    // case 'billboard/add/fulfilled':
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     products: {
+    //       ...state.products,
+    //       rents: [...state.products.rents, action.payload.product.rents],
+    //     },
+    //   };
+    // case 'billboard/add/rejected':
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     products: {
+    //       ...state.products,
+    //       rents: [],
+    //     },
+    //     error: action.error,
+    //   };
 
-      case 'visitcards/patch/pending':
+    case 'visitcards/patch/pending':
       return {
         ...state,
         loading: true,
@@ -91,7 +115,7 @@ export default function cart(state = initialState, action) {
         loading: false,
         products: {
           ...state.products,
-          sales: [...state.products.sales, action.payload.product.sales]
+          sales: [...state.products.sales, action.payload.product.sales],
         },
       };
     case 'visitcards/patch/rejected':
@@ -114,12 +138,15 @@ export const fetchRents = () => {
     const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/${state.application.token}`, {
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+      const res = await fetch(
+        `http://localhost:3030/cart/${state.application.id}`,
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
         },
-      });
+      );
 
       const json = await res.json();
 
@@ -167,8 +194,8 @@ export const addSTFormatToCart = (id, STFormat) => {
 
 export const addBillboardToCart = (id, sideA, sideB) => {
   console.log(id);
-  console.log(sideA)
-  console.log(sideB)
+  // console.log(sideA);
+  // console.log(sideB);
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'billboard/patch/pending' });
@@ -214,14 +241,22 @@ export const addVisitCardToCart = (paper, count, delivery, price) => {
     console.log(state.application.token);
     dispatch({ type: 'visitcards/patch/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/visitcard/${state.application.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+      const res = await fetch(
+        `http://localhost:3030/visitcard/${state.application.id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
+          body: JSON.stringify({
+            typePaper: paper,
+            count: count,
+            delivery: delivery,
+            price: price,
+          }),
         },
-        body: JSON.stringify({ typePaper: paper, count: count, delivery: delivery, price: price }),
-      });
+      );
       const json = await res.json();
 
       if (json.error) {
@@ -250,7 +285,7 @@ export const deleteVisitCard = (id) => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+          Authorization: `Bearer ${state.application.token}`,
         },
       });
       const json = await res.json();

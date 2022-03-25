@@ -7,18 +7,18 @@ const initialState = {
 
 export default function bilboard(state = initialState, action) {
   switch (action.type) {
-    case 'get/fetch/pending':
+    case 'getBillboard/fetch/pending':
       return {
         ...state,
         loading: true,
       };
-    case 'get/fetch/fulfilled':
+    case 'getBillboard/fetch/fulfilled':
       return {
         ...state,
         loading: false,
         billboards: action.payload,
       };
-    case 'get/fetch/rejected':
+    case 'getBillboard/fetch/rejected':
       return {
         ...state,
         loading: false,
@@ -31,34 +31,50 @@ export default function bilboard(state = initialState, action) {
 
 export const getAllBilboards = () => {
   return async (dispatch) => {
-    dispatch({ type: 'get/fetch/pending' });
+    dispatch({ type: 'getBillboard/fetch/pending' });
     try {
       const res = await fetch('http://localhost:3030/billboards');
       const json = await res.json();
       if (json.error) {
-        dispatch({ type: 'get/fetch/rejected', error: 'Ошибка при запросе' });
+        dispatch({
+          type: 'getBillboard/fetch/rejected',
+          error: 'Ошибка при запросе',
+        });
       } else {
-        dispatch({ type: 'get/fetch/fulfilled', payload: json });
+        dispatch({ type: 'getBillboard/fetch/fulfilled', payload: json });
       }
     } catch (e) {
-      dispatch({ type: 'get/fetch/rejected', error: e.toString() });
+      dispatch({ type: 'getBillboard/fetch/rejected', error: e.toString() });
     }
   };
 };
+// export const addBillboardToCart = () => {
+//   return async (dispatch, getState) => {
+//     const state = getState();
+//     dispatch({ type: 'billboard/add/pending' });
+//     try{
+//       const res = await fetch("")
+//     }
+//     catch(e){}
+//   };
+// };
 
 export const patchSideABillboard = (id, sideA) => {
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'patch/billboard/pending' });
     try {
-      const responce = await fetch(`http://localhost:3030/billboard/sidea/${id}`, {
-        method: 'PATCH',
-        headers: {
-          Authorization: `Bearer ${state.application.token}`,
-          'Content-Type': 'application/json',
+      const responce = await fetch(
+        `http://localhost:3030/billboard/sidea/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${state.application.token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ sideA }),
         },
-        body: JSON.stringify({ sideA}),
-      });
+      );
       const json = await responce.json();
       dispatch({ type: 'patch/billboard/fulfilled', payload: json });
     } catch (e) {
@@ -68,19 +84,22 @@ export const patchSideABillboard = (id, sideA) => {
 };
 
 export const patchSideBBillboard = (id, sideB) => {
-  console.log(id,sideB);
+  console.log(id, sideB);
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'patch/billboard/pending' });
     try {
-      const responce = await fetch(`http://localhost:3030/billboard/sideb/${id}`, {
-        method: 'PATCH',
-        headers: {
-          Authorization: `Bearer ${state.application.token}`,
-          'Content-Type': 'application/json',
+      const responce = await fetch(
+        `http://localhost:3030/billboard/sideb/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${state.application.token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ sideB }),
         },
-        body: JSON.stringify({sideB}),
-      });
+      );
       const json = await responce.json();
       console.log(json);
       dispatch({ type: 'patch/billboard/fulfilled', payload: json });
