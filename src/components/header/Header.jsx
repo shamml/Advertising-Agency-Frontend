@@ -20,10 +20,6 @@ const Header = () => {
     setContacts(!contacts)
   }
 
-  const closeModal = () => {
-    setContacts(false)
-  }
-
   const token = useSelector((state) => state.application.token);
   
   return token ? (
