@@ -1,24 +1,19 @@
 import React from 'react';
 import styles from './STFormats.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { addSTFormatToCart } from '../../../redux/features/cart';
+import { useDispatch } from 'react-redux';
+import { addSTFormatToCart } from '../../../redux/features/cart'
 
-const StFormatButtons = ({ STFormat }) => {
+const StFormatButtons = ({ STFormat, sideA, sideB }) => {
   const dispatch = useDispatch();
 
-  const id = useSelector((state) => state.application.id);
-
-  const handleAddProduct = (id, STFormat) => {
-    dispatch(addSTFormatToCart(id, STFormat));
+  const handleAddSTFormat = (id, sideA, sideB) => {
+    dispatch(addSTFormatToCart(id, sideA, sideB));
   };
 
   return (
     <div className={styles.STFormatButtons}>
-      <button onClick={() => handleAddProduct(id, STFormat)}>
-        {' '}
-        {!STFormat.sideA && !STFormat.sideA
-          ? 'Оформить заказ'
-          : 'Оформить заказ'}
+      <button onClick={() => handleAddSTFormat(STFormat._id, sideA,sideB)}>
+        Оформить заказ
       </button>
     </div>
   );

@@ -7,14 +7,13 @@ import touch from '../../../assets/touch.jpg';
 
 const CartPage = () => {
   const dispatch = useDispatch();
-  
+
   const sales = useSelector((state) => state.cart.products.sales);
   const loading = useSelector((state) => state.cart.loading);
   const rents = useSelector((state) => state.cart.products.rents);
   console.log(rents);
- 
+
   const total = useSelector((state) => state.cart.total);
-  const loadingProduct = useSelector(state => state.cart.loadingProduct);
 
   useEffect(() => {
     dispatch(fetchRents());
@@ -32,19 +31,28 @@ const CartPage = () => {
     <div className={styles.cartPage}>
       {!!sales.length || !!rents.length ? (
         <div className={styles.cartBlock}>
-           {rents.map((rent) => {
-          return (
-            <div className={styles.rent}>
-              <div>{rent.image}</div>
-              <div>{rent.name}</div>
-              <div>{rent.adress}</div>
-              {rent.sideA && rent.sideB ? <div>Обе стороны</div> : ''}
-              {rent.sideA && !rent.sideB && <div>Сторона А</div>}
-              {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
-              <div>{rent.price}</div>
-            </div>
-          );
-        })}
+          {rents.map((rent) => {
+            return (
+              <>
+                <div key={rent._id} className={styles.item}>
+                  <div className={styles.item1}>
+                    <img src={rent.image} alt="" />
+                  </div>
+                  <div className={styles.item2}>{rent.name}</div>
+                  <div className={styles.item3}>{rent.adress}</div>
+                  <div className={styles.item4}>
+                    {rent.sideA && rent.sideB ? <div>Обе стороны</div> : ''}
+                    {rent.sideA && !rent.sideB && <div>Сторона А</div>}
+                    {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
+                  </div>
+                  <div className={styles.item5}>{rent.price}₽</div>
+                  <button onClick={() => handleDeleteVisiCard(rent._id)}>
+                    ×
+                  </button>
+                </div>
+              </>
+            );
+          })}
           {sales.map((sale) => {
             return (
               <>
