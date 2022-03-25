@@ -26,6 +26,9 @@ const CartPage = () => {
   if (loading) {
     return <div>loading...</div>;
   }
+  const handleClickDelete = () => {
+    dispatch()
+  }
 
   return (
     <div className={styles.cartPage}>

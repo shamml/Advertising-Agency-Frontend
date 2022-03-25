@@ -18,6 +18,10 @@ nav {
   margin-left: 700px;
   cursor: pointer;
 }
+nav a {
+  text-decoration: none;
+  color: black;
+}
 
 .cartIcon {
   width: 40px;

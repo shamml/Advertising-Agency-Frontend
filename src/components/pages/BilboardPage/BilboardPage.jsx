@@ -6,6 +6,7 @@ import BilboardCard from './BilboardCard';
 import styles from './BilboardPage.module.css';
 
 const BilboardPage = () => {
+  
   window.scrollTo({
     top: 0,
     left: 0,
