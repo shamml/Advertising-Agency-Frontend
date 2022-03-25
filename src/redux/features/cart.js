@@ -156,8 +156,7 @@ export const fetchRents = () => {
     const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch(
-        'http://localhost:3030/cart/user',
+      const res = await fetch('http://localhost:3030/cart/user',
         {
           headers: {
             'Content-type': 'application/json',
