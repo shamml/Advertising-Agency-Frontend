@@ -1,7 +1,7 @@
 import { React, useEffect } from 'react';
 import styles from './CartPage.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteVisitCard, fetchRents } from '../../../redux/features/cart';
+import { deleteRent, deleteVisitCard, fetchRents } from '../../../redux/features/cart'
 import plain from '../../../assets/plain.jpg';
 import touch from '../../../assets/touch.jpg';
 
@@ -11,7 +11,6 @@ const CartPage = () => {
   const sales = useSelector((state) => state.cart.products.sales);
   const loading = useSelector((state) => state.cart.loading);
   const rents = useSelector((state) => state.cart.products.rents);
-  console.log(rents);
 
   const total = useSelector((state) => state.cart.total);
 
@@ -26,8 +25,8 @@ const CartPage = () => {
   if (loading) {
     return <div>loading...</div>;
   }
-  const handleClickDelete = () => {
-    dispatch()
+  const handleDeleteRent = (id, price) => {
+    dispatch(deleteRent(id, price))
   }
 
   return (
@@ -49,7 +48,7 @@ const CartPage = () => {
                     {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
                   </div>
                   <div className={styles.item5}>{rent.price}₽</div>
-                  <button onClick={() => handleDeleteVisiCard(rent._id)}>
+                  <button onClick={() => handleDeleteRent(rent._id, rent.price)}>
                     ×
                   </button>
                 </div>
