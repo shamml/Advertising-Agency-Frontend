@@ -8,6 +8,16 @@ import { logOut } from '../../redux/features/application';
 import HeaderModal from './HeaderModal';
 
 const Header = () => {
+  const [scroll, setScroll] = useState(false);
+  window.onscroll = function() {
+    if (window.scrollY > 0) {
+      setScroll(true)
+    } 
+    if (window.scrollY < 1) {
+      setScroll(false)
+    }
+  }
+
   const dispatch = useDispatch();
 
   const [contacts, setContacts] = useState(false);
@@ -17,13 +27,13 @@ const Header = () => {
   };
 
   const check = () => {
-    setContacts(!contacts);
+    setContacts(!contacts)
   };
 
   const token = useSelector((state) => state.application.token);
 
   return token ? (
-    <header>
+    <header className={ scroll ? styles.fixed : ""}>
       <Link to="/">
         <img className={styles.logoImage} src={logo} alt="pictur" />
       </Link>
@@ -44,7 +54,7 @@ const Header = () => {
       </Link>
     </header>
   ) : (
-    <header>
+    <header className={ scroll ? styles.fixed : ""}>
       <Link to="/">
         <img className={styles.logoImage} src={logo} alt="pictur" />
       </Link>

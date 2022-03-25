@@ -2,7 +2,8 @@
   background: url('../../assets/backgrounds/bg7.jpg');
   background-size: 100%;
   background-attachment: fixed;
-  padding: 100px 0 150px;
+  padding: 200px 0 150px;
+  height: 900px;
 }
 
 .carouselDark {
