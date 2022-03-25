@@ -3,6 +3,7 @@
   width: 1200px;
   flex-wrap: wrap;
   margin: auto;
+  padding-top: 130px;
 }
 .STFormatCard {
   width: 300px;

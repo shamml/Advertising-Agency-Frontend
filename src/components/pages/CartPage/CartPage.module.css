@@ -1,6 +1,8 @@
 .cartPage {
   width: 1200px;
-  margin: auto;
+  height: 73%;
+  margin: 0 auto;
+  padding-top: 130px;
   /* text-align: center; */
 }
 
