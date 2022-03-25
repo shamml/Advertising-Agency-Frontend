@@ -72,7 +72,30 @@ export default function cart(state = initialState, action) {
         loading: false,
         error: action.error,
       };
-
+    // case 'billboard/add/pending':
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //   };
+    // case 'billboard/add/fulfilled':
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     products: {
+    //       ...state.products,
+    //       rents: [...state.products.rents, action.payload.product.rents],
+    //     },
+    //   };
+    // case 'billboard/add/rejected':
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     products: {
+    //       ...state.products,
+    //       rents: [],
+    //     },
+    //     error: action.error,
+    //   };
     // добавление визитки в корзину
     case 'visitcards/add/pending':
       return {
@@ -134,7 +157,7 @@ export const fetchRents = () => {
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
       const res = await fetch(
-        `http://localhost:3030/cart/${state.application.token}`,
+        `http://localhost:3030/cart/${state.application.id}`,
         {
           headers: {
             'Content-type': 'application/json',
