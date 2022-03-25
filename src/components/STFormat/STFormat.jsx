@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './STFormat.module.css';
-import visitCardImage from '../../assets/STFormat.png';
+import STFormatImage from '../../assets/STFormat.png';
 import { Link } from 'react-router-dom';
 
 const StFormat = () => {
   return (
     <div className={styles.STFormatCardBlock}>
       <div className={styles.STFormatCardContent}>
-        <img className={styles.STFormatCardImage} src={visitCardImage} alt="" />
+        <img className={styles.STFormatCardImage} src={STFormatImage} alt="" />
         <div className={styles.STFormatCardApp}>
           <div className={styles.STFormatCardTitle}>СИТИ-ФОРМАТ</div>
           <div className={styles.STFormatCardDesc}>

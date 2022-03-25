@@ -6,7 +6,7 @@ const initialState = {
   total: 0,
   error: null,
   loading: false,
-  loadingProduct: true,
+  loadingProduct: false,
 };
 
 export default function cart(state = initialState, action) {
@@ -23,7 +23,8 @@ export default function cart(state = initialState, action) {
         products: {
           rents: action.payload.product.rents,
           sales: action.payload.product.sales,
-        } 
+        },
+        total: action.payload.total
       };
     case 'cart/fetch-cart/rejected':
       return {
@@ -49,10 +50,6 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         loadingProduct: false,
-        products: {
-          ...state.products,
-          rents: [],
-        },
         error: action.error,
       };
     case 'billboard/patch/pending':
@@ -73,37 +70,59 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        products: {
-          ...state.products,
-          rents: [],
-        },
         error: action.error,
       };
 
-      case 'visitcards/patch/pending':
+    // добавление визитки в корзину
+    case 'visitcards/add/pending':
       return {
         ...state,
         loading: true,
       };
-    case 'visitcards/patch/fulfilled':
+    case 'visitcards/add/fulfilled':
       return {
         ...state,
         loading: false,
         products: {
           ...state.products,
-          sales: [...state.products.sales, action.payload.product.sales]
+          sales: [...state.products.sales, action.payload],
         },
+        total: state.total + action.payload.price,
       };
-    case 'visitcards/patch/rejected':
+    case 'visitcards/add/rejected':
       return {
         ...state,
         loading: false,
-        products: {
-          ...state.products,
-          sales: [],
-        },
         error: action.error,
       };
+
+    // удаление визитки из корзины
+    case 'visitcards/delete/pending':
+      return {
+        ...state,
+        loadingProduct: true,
+      };
+    case 'visitcards/delete/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        products: {
+          ...state.products,
+          sales: state.products.sales.filter(sale => {
+            return sale._id !== action.payload._id
+          })
+        },
+        total: state.total - action.payload.price,
+        loadingProduct: false
+      }
+    case 'visitcards/delete/rejected':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+        loadingProduct: false
+      };
+
     default:
       return state;
   }
@@ -114,12 +133,15 @@ export const fetchRents = () => {
     const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/${state.application.token}`, {
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+      const res = await fetch(
+        `http://localhost:3030/cart/${state.application.token}`,
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
         },
-      });
+      );
 
       const json = await res.json();
 
@@ -166,9 +188,6 @@ export const addSTFormatToCart = (id, STFormat) => {
 };
 
 export const addBillboardToCart = (id, sideA, sideB) => {
-  console.log(id);
-  console.log(sideA)
-  console.log(sideB)
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'billboard/patch/pending' });
@@ -211,30 +230,38 @@ export const addBillboardToCart = (id, sideA, sideB) => {
 export const addVisitCardToCart = (paper, count, delivery, price) => {
   return async (dispatch, getState) => {
     const state = getState();
-    console.log(state.application.token);
-    dispatch({ type: 'visitcards/patch/pending' });
+    dispatch({ type: 'visitcards/add/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/visitcard/${state.application.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+      const res = await fetch(
+        `http://localhost:3030/visitcard/${state.application.id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
+          body: JSON.stringify({
+            typePaper: paper,
+            count: count,
+            delivery: delivery,
+            price: price,
+          }),
         },
-        body: JSON.stringify({ typePaper: paper, count: count, delivery: delivery, price: price }),
-      });
+      );
       const json = await res.json();
+      console.log(json);
 
       if (json.error) {
         dispatch({
-          type: 'visitcards/patch/rejected',
+          type: 'visitcards/add/rejected',
           error: 'Ошибка при запросе',
         });
       } else {
-        dispatch({ type: 'visitcards/patch/fulfilled', payload: json });
+        dispatch({ type: 'visitcards/add/fulfilled', payload: json });
       }
     } catch (e) {
       dispatch({
-        type: 'visitcards/patch/rejected',
+        type: 'visitcards/add/rejected',
         error: e.toString(),
       });
     }
@@ -250,7 +277,7 @@ export const deleteVisitCard = (id) => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+          Authorization: `Bearer ${state.application.token}`,
         },
       });
       const json = await res.json();
