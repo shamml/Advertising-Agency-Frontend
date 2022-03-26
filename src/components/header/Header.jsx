@@ -32,45 +32,30 @@ const Header = () => {
 
   const token = useSelector((state) => state.application.token);
 
-  return token ? (
+  return (
     <header className={ scroll ? styles.fixed : ""}>
       <Link to="/">
         <img className={styles.logoImage} src={logo} alt="pictur" />
       </Link>
       <nav>
         <Link to="/reviews">
-          <a>О нас</a>
+          <p>О нас</p>
         </Link>
-        <a onClick={check}>Контакты</a>
+        <p onClick={check}>Контакты</p>
         {contacts ? <HeaderModal /> : ''}
       </nav>
       <Link to="/cartpage">
         <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
       </Link>
       <Link to="/signin">
-        <button onClick={exit} className={styles.signInBtn}>
+        {token ? <button onClick={exit} className={styles.signInBtn}>
           Выход
-        </button>
+        </button> : <button className={styles.signInBtn}>
+          Войти
+        </button>}
       </Link>
     </header>
-  ) : (
-    <header className={ scroll ? styles.fixed : ""}>
-      <Link to="/">
-        <img className={styles.logoImage} src={logo} alt="pictur" />
-      </Link>
-      <nav>
-        <a>О нас</a>
-        <a onClick={check}>Контакты</a>
-        {contacts ? <HeaderModal /> : ''}
-      </nav>
-      <Link to="/cartpage">
-        <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
-      </Link>
-      <Link to="/signin">
-        <button className={styles.signInBtn}>Войти</button>
-      </Link>
-    </header>
-  );
+  )
 };
 
 export default Header;

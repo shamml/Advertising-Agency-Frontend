@@ -13,7 +13,7 @@ const StFormatButtons = ({ STFormat, sideA, sideB }) => {
   return (
     <div className={styles.STFormatButtons}>
       <button onClick={() => handleAddSTFormat(STFormat._id, sideA,sideB)}>
-        Оформить заказ
+        Добавить в корзину
       </button>
     </div>
   );
