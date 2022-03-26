@@ -72,6 +72,8 @@ export default function cart(state = initialState, action) {
         loading: false,
         error: action.error,
       };
+
+    // удаление rent по id из корзины
     case 'rent/delete/pending':
       return {
         ...state,
@@ -88,8 +90,6 @@ export default function cart(state = initialState, action) {
           }),
         },
       };
-      
-    // удаление rent по id из корзины
     case 'rent/delete/fulfilled':
       return {
         ...state,
@@ -389,6 +389,8 @@ export const deleteVisitCard = (id) => {
       });
       const json = await res.json();
 
+      console.log(json)
+
       if (json.error) {
         dispatch({
           type: 'visitcards/delete/rejected',
@@ -485,7 +487,7 @@ export const deleteRent = (id, price) => {
     dispatch({ type: 'rent/delete/pending', payload: id });
     try {
       const res = await fetch('http://localhost:3030/cart/delete/rent', {
-        method: 'DELETE',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.application.token}`,
