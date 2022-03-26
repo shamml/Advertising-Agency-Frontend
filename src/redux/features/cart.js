@@ -88,6 +88,7 @@ export default function cart(state = initialState, action) {
           }),
         },
       };
+      
     // удаление rent по id из корзины
     case 'rent/delete/fulfilled':
       return {
