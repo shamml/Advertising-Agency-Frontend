@@ -77,6 +77,7 @@ export default function cart(state = initialState, action) {
         ...state,
         loadingProduct: true,
       };
+      
     // удаление rent по id из корзины
     case 'rent/delete/fulfilled':
       return {
