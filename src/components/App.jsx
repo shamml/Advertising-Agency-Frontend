@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Header from './header/Header';
-import Footer from './footer/Footer';
+import React from 'react';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import SigninPage from './pages/SigninPage/SigninPage';
@@ -13,6 +13,7 @@ import CartPage from './pages/CartPage/CartPage';
 import { useSelector } from 'react-redux';
 import ReviewPage from './pages/ReviewPage/ReviewPage';
 import styles from './App.module.css';
+import OrderPage from './pages/OrderPage/OrderPage';
 
 const App = () => {
   const token = useSelector((state) => state.application.token);
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/cartpage" element={<CartPage />} />
           <Route path="/STFormat" element={<StFormatPage />} />
           <Route path="/reviews" element={<ReviewPage />} />
+          <Route path='/orders' element={<OrderPage />} />
         </Routes>
         <Footer />
     </div>
@@ -43,6 +45,7 @@ const App = () => {
           <Route path="/cartpage" element={<CartPage />} />
           <Route path="/STFormat" element={<StFormatPage />} />
           <Route path="/reviews" element={<ReviewPage />} />
+          <Route path='/orders' element={<OrderPage />} />
         </Routes>
         <Footer />
     </div>

@@ -15,7 +15,7 @@ const StFormatButtons = ({ STFormat, sideA, sideB }) => {
   return (
     <div className={styles.STFormatButtons}>
       <button disabled={(sideA || !sideB) && (!sideA || sideB) && (!sideA || !sideB) ? "disabled" : ""} onClick={() => handleAddSTFormat(STFormat._id, sideA,sideB)}>
-        Оформить заказ
+        Добавить в корзину
       </button>
     </div>
   );

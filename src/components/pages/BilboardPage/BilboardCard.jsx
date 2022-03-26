@@ -10,7 +10,7 @@ import { BiRuble } from 'react-icons/bi';
 const BilboardCard = ({ billboard }) => {
   const [sideA, setSideA] = useState(false);
   const [sideB, setSideB] = useState(false);
-  console.log(`sideA: ${sideA} sideB ${sideB}`)
+  console.log(`sideA: ${sideA} sideB ${sideB}`);
 
 
   const dispatch = useDispatch();

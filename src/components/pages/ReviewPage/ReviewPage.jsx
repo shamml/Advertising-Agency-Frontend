@@ -43,13 +43,13 @@ function ReviewPage() {
     <div className={styles.containerReview}>
       <input className={styles.oneWordReview} type="text" name="text" />
       <p>Если бы ваш отзыв ограничивался одной фразой, что бы вы сказали?</p>
-      <input
+      <textarea
         className={styles.textReview}
         type="text"
         name="text"
         value={text}
         onChange={handleChangeText}
-      />
+      ></textarea>
       <div className={styles.recInp}>
         <span>Рекомендуете ли вы это своим друзьям?</span>
         <div className={styles.yes}>
@@ -58,9 +58,10 @@ function ReviewPage() {
             onChange={handleClickYes}
             type="radio"
             checked={yes}
-            name="yes"
+            name="rec"
+            id='rec1'
           />
-          <label>Да</label>
+          <label htmlFor='rec1'>Да</label>
         </div>
         <div className={styles.no}>
           <input
@@ -68,9 +69,10 @@ function ReviewPage() {
             onChange={handleClickNo}
             type="radio"
             checked={no}
-            name="no"
+            name="rec"
+            id='rec2'
           ></input>
-          <label>Нет</label>
+          <label htmlFor='rec2'>Нет</label>
         </div>
       </div>
       <button disabled={disabled} onClick={handleClickAddReview}>
