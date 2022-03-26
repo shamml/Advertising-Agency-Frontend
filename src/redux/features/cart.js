@@ -169,6 +169,7 @@ export default function cart(state = initialState, action) {
           })
         },
       };
+      
     case 'visitcards/delete/fulfilled':
       return {
         ...state,
