@@ -179,6 +179,8 @@ export const fetchRents = () => {
   };
 };
 
+
+
 export const addSTFormatToCart = (id, sideA, sideB) => {
   return async (dispatch, getSate) => {
     const state = getSate();
