@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { addSTFormatToCart } from '../../../redux/features/cart'
 
 const StFormatButtons = ({ STFormat, sideA, sideB }) => {
+
+
   const dispatch = useDispatch();
 
   const handleAddSTFormat = (id, sideA, sideB) => {
@@ -12,7 +14,7 @@ const StFormatButtons = ({ STFormat, sideA, sideB }) => {
 
   return (
     <div className={styles.STFormatButtons}>
-      <button onClick={() => handleAddSTFormat(STFormat._id, sideA,sideB)}>
+      <button disabled={(sideA || !sideB) && (!sideA || sideB) && (!sideA || !sideB) ? "disabled" : ""} onClick={() => handleAddSTFormat(STFormat._id, sideA,sideB)}>
         Оформить заказ
       </button>
     </div>

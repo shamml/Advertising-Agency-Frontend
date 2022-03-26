@@ -12,6 +12,7 @@ const BilboardCard = ({ billboard }) => {
   const [sideB, setSideB] = useState(false);
   console.log(`sideA: ${sideA} sideB ${sideB}`)
 
+
   const dispatch = useDispatch();
 
   const handleClickPatchSideA = () => {
@@ -79,9 +80,9 @@ const BilboardCard = ({ billboard }) => {
               )}
             </div>
           </div>
-          <div className={styles.orderBtn}>
-            <button onClick={() => handleAddBillboard(billboard._id)}>
-              Оформить заказ
+          <div data-title='Выберите хотя бы одну сторону' className={styles.orderBtn}>
+            <button  disabled={(sideA || !sideB) && (!sideA || sideB) && (!sideA || !sideB) ? "disabled" : ""} onClick={() => handleAddBillboard(billboard._id)}>
+              Добавить в корзину
             </button>
           </div>
         </div>

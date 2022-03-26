@@ -41,7 +41,7 @@ const CartPage = () => {
                     <img src={rent.image} alt="" />
                   </div>
                   <div className={styles.item2}>{rent.name}</div>
-                  <div className={styles.item3}>{rent.adress}</div>
+                  <div className={styles.item3}>{rent.address}</div>
                   <div className={styles.item4}>
                     {rent.sideA && rent.sideB ? <div>Обе стороны</div> : ''}
                     {rent.sideA && !rent.sideB && <div>Сторона А</div>}
