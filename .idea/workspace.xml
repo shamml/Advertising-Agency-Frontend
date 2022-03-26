@@ -119,10 +119,15 @@
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/BilboardPage/BilboardCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/BilboardPage/BilboardCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/CartPage/CartPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/CartPage/CartPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/STFormatPage/STFormatPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/features/bilboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/features/bilboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/bilboard/Bilboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bilboard/Bilboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/bilboard/Bilboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bilboard/Bilboard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/Carousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel/Carousel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/Carousel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel/Carousel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/HeaderModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/features/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/features/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
@@ -735,6 +740,7 @@
       <workItem from="1647988257733" duration="7500000" />
       <workItem from="1648019873389" duration="11658000" />
       <workItem from="1648229170735" duration="10463000" />
+      <workItem from="1648324598030" duration="4682000" />
     </task>
     <servers />
   </component>
