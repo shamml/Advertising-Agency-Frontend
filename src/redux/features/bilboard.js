@@ -48,63 +48,55 @@ export const getAllBilboards = () => {
     }
   };
 };
-// export const addBillboardToCart = () => {
+
+// для дальнейшей работы на стороне админа
+
+// export const patchSideABillboard = (id, sideA) => {
 //   return async (dispatch, getState) => {
 //     const state = getState();
-//     dispatch({ type: 'billboard/add/pending' });
-//     try{
-//       const res = await fetch("")
+//     dispatch({ type: 'patch/billboard/pending' });
+//     try {
+//       const responce = await fetch(
+//         `http://localhost:3030/billboard/sidea/${id}`,
+//         {
+//           method: 'PATCH',
+//           headers: {
+//             Authorization: `Bearer ${state.application.token}`,
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify({ sideA }),
+//         },
+//       );
+//       const json = await responce.json();
+//       dispatch({ type: 'patch/billboard/fulfilled', payload: json });
+//     } catch (e) {
+//       dispatch({ type: 'patch/billboard/rejected', error: e.toString() });
 //     }
-//     catch(e){}
 //   };
 // };
-
-export const patchSideABillboard = (id, sideA) => {
-  return async (dispatch, getState) => {
-    const state = getState();
-    dispatch({ type: 'patch/billboard/pending' });
-    try {
-      const responce = await fetch(
-        `http://localhost:3030/billboard/sidea/${id}`,
-        {
-          method: 'PATCH',
-          headers: {
-            Authorization: `Bearer ${state.application.token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ sideA }),
-        },
-      );
-      const json = await responce.json();
-      dispatch({ type: 'patch/billboard/fulfilled', payload: json });
-    } catch (e) {
-      dispatch({ type: 'patch/billboard/rejected', error: e.toString() });
-    }
-  };
-};
-
-export const patchSideBBillboard = (id, sideB) => {
-  console.log(id, sideB);
-  return async (dispatch, getState) => {
-    const state = getState();
-    dispatch({ type: 'patch/billboard/pending' });
-    try {
-      const responce = await fetch(
-        `http://localhost:3030/billboard/sideb/${id}`,
-        {
-          method: 'PATCH',
-          headers: {
-            Authorization: `Bearer ${state.application.token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ sideB }),
-        },
-      );
-      const json = await responce.json();
-      console.log(json);
-      dispatch({ type: 'patch/billboard/fulfilled', payload: json });
-    } catch (e) {
-      dispatch({ type: 'patch/billboard/rejected', error: e.toString() });
-    }
-  };
-};
+//
+// export const patchSideBBillboard = (id, sideB) => {
+//   console.log(id, sideB);
+//   return async (dispatch, getState) => {
+//     const state = getState();
+//     dispatch({ type: 'patch/billboard/pending' });
+//     try {
+//       const responce = await fetch(
+//         `http://localhost:3030/billboard/sideb/${id}`,
+//         {
+//           method: 'PATCH',
+//           headers: {
+//             Authorization: `Bearer ${state.application.token}`,
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify({ sideB }),
+//         },
+//       );
+//       const json = await responce.json();
+//       console.log(json);
+//       dispatch({ type: 'patch/billboard/fulfilled', payload: json });
+//     } catch (e) {
+//       dispatch({ type: 'patch/billboard/rejected', error: e.toString() });
+//     }
+//   };
+// };

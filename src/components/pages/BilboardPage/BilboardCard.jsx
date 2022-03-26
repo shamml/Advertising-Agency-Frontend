@@ -1,49 +1,38 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addBillboardToCart } from '../../../redux/features/cart';
 import styles from './BilboardPage.module.css';
 import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
-import {
-  patchSideABillboard,
-  patchSideBBillboard,
-} from '../../../redux/features/bilboard';
 
 const BilboardCard = ({ billboard }) => {
   const [sideA, setSideA] = useState(false);
   const [sideB, setSideB] = useState(false);
+  console.log(`sideA: ${sideA} sideB ${sideB}`)
 
-
-  const id = useSelector((state) => state.application.id);
-  const cart = useSelector((state) => state.cart.products.rents);
-  console.log(cart);
-
-// const isCartItems = cart.some((item) => item._id === billboard._id);
   const dispatch = useDispatch();
+
+  const handleClickPatchSideA = () => {
+    setSideA(!sideA);
+  };
+  const handleClickPatchSideB = () => {
+    setSideB(!sideB);
+  };
 
   const handleAddBillboard = (id) => {
     dispatch(addBillboardToCart(id, sideA, sideB));
   };
 
-  const handleClickPatchSideA = (e) => {
-    setSideA(!sideA);
-  };
+  // для дальнейшей работы на стороне админа
 
-  const patchSideAlphaBillboard = () => {
-    dispatch(patchSideABillboard(id, sideA));
-  };
-
-  const patchSideBetaBillboard = (id) => {
-    dispatch(patchSideBBillboard(id, sideB));
-  };
-
-  // console.log(sideA, sideB);
-
-  const handleClickPatchSideB = (e) => {
-    setSideB(!sideB);
-  };
+  // const patchSideAlphaBillboard = () => {
+  //   dispatch(patchSideABillboard(id, sideA));
+  // };
+  // const patchSideBetaBillboard = (id) => {
+  //   dispatch(patchSideBBillboard(id, sideB));
+  // };
 
   return (
     <div className={styles.billboardCards}>
@@ -65,11 +54,9 @@ const BilboardCard = ({ billboard }) => {
             sideA:{' '}
             {billboard.sideA ? (
               <input
-                onClick={() => patchSideAlphaBillboard(billboard._id)}
                 value={sideA}
                 onChange={handleClickPatchSideA}
                 type="checkbox"
-                // checked={billboard.sideA}
               />
             ) : (
               <input type="checkbox" disabled={true} />
@@ -83,8 +70,6 @@ const BilboardCard = ({ billboard }) => {
               sideB:{' '}
               {billboard.sideB ? (
                 <input
-                  // checked={billboard.sideB}
-                  onClick={() => patchSideBetaBillboard(billboard._id)}
                   type="checkbox"
                   value={sideB}
                   onChange={handleClickPatchSideB}

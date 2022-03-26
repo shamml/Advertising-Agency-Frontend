@@ -1,5 +1,7 @@
 .visitCardPage {
-  padding: 130px 0;
+  padding: 130px 100px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .visitCardBlock {
@@ -30,7 +32,7 @@
 }
 
 .paperBlock {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .paperBlock input {
@@ -44,6 +46,7 @@
 .visitCardSelect {
   cursor: pointer;
   margin-bottom: 15px;
+  margin-left: 10px;
 }
 
 .visitCardCheck {
@@ -51,14 +54,26 @@
 }
 
 .visitCardBtn {
-  width: 190px;
+  width: 230px;
   height: 50px;
   border: none;
   background-color: #f21137;
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 15px;
+  margin-top: 17px;
+}
+
+.visitInCartBtn {
+  width: 230px;
+  height: 50px;
+  border: none;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 17px; 
+  border: 2px #f21137 solid;
 }
 
 .price {
@@ -67,4 +82,66 @@
   bottom: 20px;
   font-weight: 700;
   font-size: 25px;
+}
+
+
+.bannerImage {
+  width: 600px;
+  height: 400px;
+  padding-top: 50px;
+  margin: auto;
+  text-align: center;
+}
+
+.bannerImage img {
+  width: 500px;
+}
+
+.bannerForm {
+  width: 510px;
+  padding: 20px;
+}
+
+.bannerSize {
+  margin-bottom: 15px;
+}
+
+.bannerSize input {
+  width: 70px;
+  font-size: 14px;
+}
+
+.bannerSize label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.bannerCount div,
+.bannerCount button {
+  font-size: 14px;
+}
+
+.bannerCount {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.bannerCount .btn {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #f21137;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.line {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
 }

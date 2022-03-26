@@ -72,30 +72,31 @@ export default function cart(state = initialState, action) {
         loading: false,
         error: action.error,
       };
-    // case 'billboard/add/pending':
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //   };
-    // case 'billboard/add/fulfilled':
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     products: {
-    //       ...state.products,
-    //       rents: [...state.products.rents, action.payload.product.rents],
-    //     },
-    //   };
-    // case 'billboard/add/rejected':
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     products: {
-    //       ...state.products,
-    //       rents: [],
-    //     },
-    //     error: action.error,
-    //   };
+    case 'rent/delete/pending':
+      return {
+        ...state,
+        loadingProduct: true,
+      };
+    // удаление rent по id из корзины
+    case 'rent/delete/fulfilled':
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          rents: state.products.rents.filter((rent) => {
+            return rent._id !== action.payload.id;
+          }),
+        },
+        total: state.total - action.payload.price,
+        loadingProduct: false,
+      };
+    case 'rent/delete/rejected':
+      return {
+        ...state,
+        error: action.error,
+        loadingProduct: false,
+      };
+
     // добавление визитки в корзину
     case 'visitcards/add/pending':
       return {
@@ -156,14 +157,12 @@ export const fetchRents = () => {
     const state = getState();
     dispatch({ type: 'cart/fetch-cart/pending' });
     try {
-      const res = await fetch('http://localhost:3030/cart/user',
-        {
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: `Bearer ${state.application.token}`,
-          },
+      const res = await fetch('http://localhost:3030/cart/user', {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`,
+        },
       });
-
       const json = await res.json();
 
       if (json.error) {
@@ -184,23 +183,26 @@ export const fetchRents = () => {
 
 export const addSTFormatToCart = (id, sideA, sideB) => {
   return async (dispatch, getSate) => {
-    const state = getSate()
+    const state = getSate();
     dispatch({ type: 'STFormat/patch/pending' });
     try {
-      const res = await fetch(`http://localhost:3030/cart/stFormat/${id}/rents`, {
-        method: 'PATCH',
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${state.application.token}`
+      const res = await fetch(
+        `http://localhost:3030/cart/stFormat/${id}/rents`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
+          body: JSON.stringify({
+            sideA: sideA,
+            sideB: sideB,
+          }),
         },
-        body: JSON.stringify({
-          sideA: sideA,
-          sideB: sideB,
-        }),
-      });
+      );
       const json = await res.json();
 
-      console.log(json)
+      console.log(json);
       if (json.error) {
         dispatch({
           type: 'STFormat/patch/rejected',
@@ -328,19 +330,36 @@ export const deleteVisitCard = (id) => {
   };
 };
 
-export const deleteBillboard = () => {
+export const deleteRent = (id, price) => {
   return async (dispatch, getState) => {
     const state = getState();
-    dispatch({ type: 'billboard/delete/pending' });
+    dispatch({ type: 'rent/delete/pending' });
     try {
-      const res = await fetch(``, {
+      const res = await fetch('http://localhost:3030/cart/delete/rent', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.application.token}`,
         },
+        body: JSON.stringify({id: id})
       });
       const json = await res.json();
-    } catch (e) {}
+
+      console.log(json)
+
+      if (json.error) {
+        dispatch({
+          type: 'rent/delete/rejected',
+          error: 'Ошибка при запросе',
+        })
+      }else {
+        dispatch({ type: 'rent/delete/fulfilled', payload: {id, price} });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'rent/delete/rejected',
+        error: e.toString(),
+      })
+    }
   };
 };
