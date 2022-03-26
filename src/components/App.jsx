@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Header from './header/Header';
-import Footer from './footer/Footer';
+import React from 'react';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import SigninPage from './pages/SigninPage/SigninPage';

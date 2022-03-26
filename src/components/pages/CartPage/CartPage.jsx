@@ -45,7 +45,7 @@ const CartPage = () => {
         <div className={styles.cartBlock}>
           {rents.map((rent) => {
             return (
-              <div key={rent._id} className={styles.item}>
+              <div key={rent._id} className={rent.deleting ? `${styles.item} ${styles.deleting}` : styles.item}>
                 <div className={styles.item1}>
                   <img src={rent.image} alt="" />
                 </div>
@@ -66,7 +66,7 @@ const CartPage = () => {
           {sales.map((sale) => {
             return (
               <>
-                <div key={sale._id} className={styles.item}>
+                <div key={sale._id} className={sale.deleting ? `${styles.item} ${styles.deleting}` : styles.item} >
                   <div className={styles.item1}>
                     {(function () {
                       switch (sale.typePaper) {

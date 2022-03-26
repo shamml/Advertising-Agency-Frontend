@@ -78,11 +78,15 @@
   cursor: pointer;
 }
 
+.item button:hover {
+  background-color: rgb(82, 82, 82);
+}
+
 .emptyCart {
   color: rgb(170, 170, 170);
   font-size: 50px;
   font-weight: 700;
-  padding: 260px 0;
+  padding: 210px 0;
   text-align: center;
 }
 

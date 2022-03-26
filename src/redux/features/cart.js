@@ -75,7 +75,18 @@ export default function cart(state = initialState, action) {
     case 'rent/delete/pending':
       return {
         ...state,
-        loadingProduct: true,
+        products: {
+          ...state.products,
+          rents: state.products.rents.map((rent) => {
+            if (rent._id === action.payload) {
+              return {
+                ...rent,
+                deleting: true
+              }
+            }
+            return rent
+          }),
+        },
       };
     // удаление rent по id из корзины
     case 'rent/delete/fulfilled':
@@ -88,13 +99,11 @@ export default function cart(state = initialState, action) {
           }),
         },
         total: state.total - action.payload.price,
-        loadingProduct: false,
       };
     case 'rent/delete/rejected':
       return {
         ...state,
         error: action.error,
-        loadingProduct: false,
       };
 
     // добавление визитки в корзину
@@ -147,12 +156,22 @@ export default function cart(state = initialState, action) {
     case 'visitcards/delete/pending':
       return {
         ...state,
-        loadingProduct: true,
+        products: {
+          ...state.products,
+          sales: state.products.sales.map((sale) => {
+            if (sale._id === action.payload) {
+              return {
+                ...sale,
+                deleting:true
+              }
+            }
+            return sale
+          })
+        },
       };
     case 'visitcards/delete/fulfilled':
       return {
         ...state,
-        loading: false,
         products: {
           ...state.products,
           sales: state.products.sales.filter((sale) => {
@@ -165,21 +184,29 @@ export default function cart(state = initialState, action) {
     case 'visitcards/delete/rejected':
       return {
         ...state,
-        loading: false,
         error: action.error,
-        loadingProduct: false,
       };
 
     // удаление баннера из корзины
     case 'banners/delete/pending':
       return {
         ...state,
-        loadingProduct: true,
+        products: {
+          ...state.products,
+          sales: state.products.sales.map((sale) => {
+            if (sale._id === action.payload) {
+              return {
+                ...sale,
+                deleting:true
+              }
+            }
+            return sale
+          })
+        },
       };
     case 'banners/delete/fulfilled':
       return {
         ...state,
-        loading: false,
         products: {
           ...state.products,
           sales: state.products.sales.filter((sale) => {
@@ -187,14 +214,11 @@ export default function cart(state = initialState, action) {
           }),
         },
         total: state.total - action.payload.price,
-        loadingProduct: false,
       };
     case 'banners/delete/rejected':
       return {
         ...state,
-        loading: false,
         error: action.error,
-        loadingProduct: false,
       };
 
     default:
@@ -350,7 +374,7 @@ export const addVisitCardToCart = (paper, count, delivery, price) => {
 export const deleteVisitCard = (id) => {
   return async (dispatch, getState) => {
     const state = getState();
-    dispatch({ type: 'visitcards/delete/pending' });
+    dispatch({ type: 'visitcards/delete/pending', payload: id });
     try {
       const res = await fetch(`http://localhost:3030/visitcard/${id}`, {
         method: 'DELETE',
@@ -423,7 +447,7 @@ export const addBannerToCart = (typePaper, count, delivery, price) => {
 export const deleteBanner = (id) => {
   return async (dispatch, getState) => {
     const state = getState();
-    dispatch({ type: 'banners/delete/pending' });
+    dispatch({ type: 'banners/delete/pending', payload: id });
     try {
       const res = await fetch(`http://localhost:3030/banners/${id}`, {
         method: 'DELETE',
@@ -454,7 +478,7 @@ export const deleteBanner = (id) => {
 export const deleteRent = (id, price) => {
   return async (dispatch, getState) => {
     const state = getState();
-    dispatch({ type: 'rent/delete/pending' });
+    dispatch({ type: 'rent/delete/pending', payload: id });
     try {
       const res = await fetch('http://localhost:3030/cart/delete/rent', {
         method: 'DELETE',
