@@ -43,3 +43,6 @@
   border-radius: 5px;
   margin-top: 10px;
 }
+.STFormatButtons button:disabled {
+  opacity: 0.5;
+}

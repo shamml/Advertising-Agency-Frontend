@@ -45,6 +45,24 @@ const CartPage = () => {
         <div className={styles.cartBlock}>
           {rents.map((rent) => {
             return (
+// <<<<<<< abu
+//               <>
+//                 <div key={rent._id} className={styles.item}>
+//                   <div className={styles.item1}>
+//                     <img src={rent.image} alt="" />
+//                   </div>
+//                   <div className={styles.item2}>{rent.name}</div>
+//                   <div className={styles.item3}>{rent.address}</div>
+//                   <div className={styles.item4}>
+//                     {rent.sideA && rent.sideB ? <div>Обе стороны</div> : ''}
+//                     {rent.sideA && !rent.sideB && <div>Сторона А</div>}
+//                     {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
+//                   </div>
+//                   <div className={styles.item5}>{rent.price}₽</div>
+//                   <button onClick={() => handleDeleteRent(rent._id, rent.price)}>
+//                     ×
+//                   </button>
+// =======
               <div key={rent._id} className={rent.deleting ? `${styles.item} ${styles.deleting}` : styles.item}>
                 <div className={styles.item1}>
                   <img src={rent.image} alt="" />
