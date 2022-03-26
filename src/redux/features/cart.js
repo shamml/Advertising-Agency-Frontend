@@ -162,7 +162,6 @@ export const fetchRents = () => {
             'Content-type': 'application/json',
             Authorization: `Bearer ${state.application.token}`,
           },
-        },
       });
 
       const json = await res.json();
@@ -180,6 +179,8 @@ export const fetchRents = () => {
     }
   };
 };
+
+
 
 export const addSTFormatToCart = (id, sideA, sideB) => {
   return async (dispatch, getSate) => {
