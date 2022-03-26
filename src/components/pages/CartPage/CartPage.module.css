@@ -15,6 +15,7 @@
   padding: 20px 20px;
   align-items: center;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
 }
 
 .orderBtn {
@@ -49,24 +50,16 @@
   text-align: center;
 }
 
-/* .item1 {
-  align-items: center;
-}
-
-.item1 img {
-  width: 160px;
-} */
-
 .item2 {
-  width: 200px;
+  width: 140px;
 }
 
 .item3 {
-  width: 180px;
+  width: 260px;
 }
 
 .item4 {
-  width: 120px;
+  width: 170px;
 }
 
 .item5 {

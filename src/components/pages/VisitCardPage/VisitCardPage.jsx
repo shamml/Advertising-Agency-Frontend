@@ -3,7 +3,7 @@ import styles from './VisitCardPage.module.css';
 import visitCardImage from '../../../assets/visitcardimg.jpg';
 import bannerImage from '../../../assets/banner.jpg';
 import { useDispatch } from 'react-redux';
-import { addVisitCardToCart } from '../../../redux/features/cart';
+import { addBannerToCart, addVisitCardToCart } from '../../../redux/features/cart';
 
 const VisitCardPage = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const VisitCardPage = () => {
     }
   };
 
-  let price = count * paper + delivery;
+  const price = Math.round(count * paper + delivery);
 
   const [visitInCart, setVisitIncart] = useState(false);
   const handleClickAddVisitCard = () => {
@@ -64,7 +64,7 @@ const VisitCardPage = () => {
     }
   };
 
-  let square = (width / 100) * (height / 100);
+  const square = (width / 100) * (height / 100);
 
   const [bannerCount, setBannerCount] = useState(1);
   const handlePlus = () => {
@@ -79,18 +79,15 @@ const VisitCardPage = () => {
     }
   };
 
-  let bannerPrice = square * bannerType * bannerCount + bannerDelivery;
+  const bannerPrice = Math.round(square * bannerType * bannerCount + bannerDelivery);
 
   const [bannerInCart, setBannerIncart] = useState(false);
   const handleClickAddBanner = () => {
-    // dispatch(addBannerToCart(bannerType, square, !!bannerDelivery, bannerPrice));
+    dispatch(addBannerToCart(Number(bannerType), bannerCount, !!bannerDelivery, bannerPrice));
     setBannerIncart(true);
     setTimeout(() => {
       setBannerIncart(false);
     }, 1000);
-    console.log(square);
-    console.log(bannerType);
-    console.log(bannerCount);
   };
 
   return (

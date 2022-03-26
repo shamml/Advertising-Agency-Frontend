@@ -10,7 +10,7 @@ import { BiRuble } from 'react-icons/bi';
 const BilboardCard = ({ billboard }) => {
   const [sideA, setSideA] = useState(false);
   const [sideB, setSideB] = useState(false);
-  console.log(`sideA: ${sideA} sideB ${sideB}`)
+  console.log(`sideA: ${sideA} sideB ${sideB}`);
 
   const dispatch = useDispatch();
 
@@ -81,7 +81,7 @@ const BilboardCard = ({ billboard }) => {
           </div>
           <div className={styles.orderBtn}>
             <button onClick={() => handleAddBillboard(billboard._id)}>
-              Оформить заказ
+              Добавить в корзину
             </button>
           </div>
         </div>

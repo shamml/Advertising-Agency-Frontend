@@ -1,12 +1,21 @@
 .containerReview {
   width: 700px;
   height: 700px;
-  margin: 50px auto;
+  margin: auto;
+  padding-top: 130px;
 }
 
 .containerReview input {
   width: 650px;
   margin: 10px 25px;
+}
+
+.containerReview textarea {
+  width: 650px;
+  height: 250px;
+  margin: 10px 25px;
+  resize: none;
+  outline: none;
 }
 
 .containerReview button {
@@ -73,4 +82,8 @@ input[type='radio']:checked + label {
 }
 input[type="text"] {
   outline: none;
+}
+
+.containerReview label {
+  cursor: pointer;
 }

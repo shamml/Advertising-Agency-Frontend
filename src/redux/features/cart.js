@@ -120,6 +120,29 @@ export default function cart(state = initialState, action) {
         error: action.error,
       };
 
+    // добавление баннера в корзину
+    case 'banners/add/pending':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'banners/add/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        products: {
+          ...state.products,
+          sales: [...state.products.sales, action.payload],
+        },
+        total: state.total + action.payload.price,
+      };
+    case 'banners/add/rejected':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+
     // удаление визитки из корзины
     case 'visitcards/delete/pending':
       return {
@@ -140,6 +163,33 @@ export default function cart(state = initialState, action) {
         loadingProduct: false,
       };
     case 'visitcards/delete/rejected':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+        loadingProduct: false,
+      };
+
+    // удаление баннера из корзины
+    case 'banners/delete/pending':
+      return {
+        ...state,
+        loadingProduct: true,
+      };
+    case 'banners/delete/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        products: {
+          ...state.products,
+          sales: state.products.sales.filter((sale) => {
+            return sale._id !== action.payload._id;
+          }),
+        },
+        total: state.total - action.payload.price,
+        loadingProduct: false,
+      };
+    case 'banners/delete/rejected':
       return {
         ...state,
         loading: false,
@@ -322,6 +372,79 @@ export const deleteVisitCard = (id) => {
     } catch (e) {
       dispatch({
         type: 'visitcards/delete/rejected',
+        error: e.toString(),
+      });
+    }
+  };
+};
+
+export const addBannerToCart = (typePaper, count, delivery, price) => {
+  console.log(typePaper, count, delivery, price);
+  return async (dispatch, getState) => {
+    const state = getState();
+    dispatch({ type: 'banners/add/pending' });
+    try {
+      const res = await fetch(
+        `http://localhost:3030/banners/${state.application.id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${state.application.token}`,
+          },
+          body: JSON.stringify({
+            typePaper,
+            count,
+            delivery,
+            price
+          }),
+        },
+      );
+      const json = await res.json();
+      console.log(json);
+
+      if (json.error) {
+        dispatch({
+          type: 'banners/add/rejected',
+          error: 'Ошибка при запросе',
+        });
+      } else {
+        dispatch({ type: 'banners/add/fulfilled', payload: json });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'banners/add/rejected',
+        error: e.toString(),
+      });
+    }
+  };
+};
+
+export const deleteBanner = (id) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    dispatch({ type: 'banners/delete/pending' });
+    try {
+      const res = await fetch(`http://localhost:3030/banners/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`,
+        },
+      });
+      const json = await res.json();
+
+      if (json.error) {
+        dispatch({
+          type: 'banners/delete/rejected',
+          error: 'Ошибка при запросе',
+        });
+      } else {
+        dispatch({ type: 'banners/delete/fulfilled', payload: json });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'banners/delete/rejected',
         error: e.toString(),
       });
     }
