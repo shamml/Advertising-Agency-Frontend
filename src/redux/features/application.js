@@ -89,7 +89,6 @@ export const authorization = (login, password) => {
       dispatch({ type: 'application/auhtorization/fulfilled', payload: json });
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
-      // localStorage.setItem("cartId", json.cartId);
     } catch (e) {
       dispatch({ type: 'application/auhtorization/rejected' });
     }

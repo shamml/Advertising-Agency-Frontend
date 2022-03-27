@@ -46,3 +46,10 @@
 .STFormatButtons button:disabled {
   opacity: 0.5;
 }
+
+input[type='checkbox'] {
+  cursor: pointer;
+}
+input:disabled {
+cursor: default;
+}

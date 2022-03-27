@@ -10,20 +10,20 @@ import { BiRuble } from 'react-icons/bi';
 const BilboardCard = ({ billboard }) => {
   const [sideA, setSideA] = useState(false);
   const [sideB, setSideB] = useState(false);
-  console.log(`sideA: ${sideA} sideB ${sideB}`);
-
 
   const dispatch = useDispatch();
 
   const handleClickPatchSideA = () => {
     setSideA(!sideA);
   };
+
   const handleClickPatchSideB = () => {
     setSideB(!sideB);
   };
 
   const handleAddBillboard = (id) => {
     dispatch(addBillboardToCart(id, sideA, sideB));
+    console.log(sideA, sideB);
   };
 
   // для дальнейшей работы на стороне админа
@@ -53,15 +53,12 @@ const BilboardCard = ({ billboard }) => {
           <div className={styles.sideA}>
             <CgSidebar />
             sideA:{' '}
-            {billboard.sideA ? (
               <input
                 value={sideA}
                 onChange={handleClickPatchSideA}
                 type="checkbox"
+                disabled={billboard.sideA}
               />
-            ) : (
-              <input type="checkbox" disabled={true} />
-            )}
           </div>
           <div className={styles.sideB}>
             <div>
@@ -69,19 +66,16 @@ const BilboardCard = ({ billboard }) => {
             </div>
             <div>
               sideB:{' '}
-              {billboard.sideB ? (
                 <input
                   type="checkbox"
                   value={sideB}
                   onChange={handleClickPatchSideB}
+                  disabled={billboard.sideB}
                 />
-              ) : (
-                <input type="checkbox" disabled={true} />
-              )}
             </div>
           </div>
-          <div data-title='Выберите хотя бы одну сторону' className={styles.orderBtn}>
-            <button  disabled={(sideA || !sideB) && (!sideA || sideB) && (!sideA || !sideB) ? "disabled" : ""} onClick={() => handleAddBillboard(billboard._id)}>
+          <div className={styles.orderBtn}>
+            <button onClick={() => handleAddBillboard(billboard._id)}>
               Добавить в корзину
             </button>
           </div>

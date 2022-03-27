@@ -31,6 +31,9 @@ const Header = () => {
   };
 
   const token = useSelector((state) => state.application.token);
+  const rentsInCartLength = useSelector((state => state.cart.products.rents.length));
+  const salesInCartLength = useSelector((state => state.cart.products.sales.length));
+  const amount = rentsInCartLength + salesInCartLength;
 
   return (
     <header className={ scroll ? styles.fixed : ""}>
@@ -45,7 +48,10 @@ const Header = () => {
         {contacts ? <HeaderModal /> : ''}
       </nav>
       <Link to="/cartpage">
-        <img className={styles.cartIcon} src={cartIcon} alt="carticon" />
+        <div className={styles.cartIcon}>
+          {!!amount && <div className={styles.amount}>{amount}</div>}
+          <img src={cartIcon} alt="carticon" />
+        </div>
       </Link>
       <Link to="/signin">
         {token ? <button onClick={exit} className={styles.signInBtn}>
