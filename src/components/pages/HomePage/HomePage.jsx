@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './HomePage.module.css';
 import Carousel from '../../Carousel/Carousel';
 import VisitCard from '../../visitCard/VisitCard';

@@ -75,7 +75,7 @@ const BilboardCard = ({ billboard }) => {
             </div>
           </div>
           <div className={styles.orderBtn}>
-            <button onClick={() => handleAddBillboard(billboard._id)}>
+            <button disabled={(sideA || !sideB) && (!sideA || sideB) && (!sideA || !sideB) ? "disabled" : ""} onClick={() => handleAddBillboard(billboard._id)}>
               Добавить в корзину
             </button>
           </div>
