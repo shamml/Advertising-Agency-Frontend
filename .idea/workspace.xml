@@ -118,7 +118,10 @@
       <change beforePath="$PROJECT_DIR$/../Sublime Text 3.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/map/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map/Map.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/ReviewPage/ReviewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ReviewPage/ReviewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/features/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/features/reviews.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.prettierrc" beforeDir="false" />
