@@ -4,6 +4,13 @@ import { addReview } from '../../../redux/features/review';
 import styles from './styles.module.css';
 
 function ReviewPage() {
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+  
   const dispatch = useDispatch();
 
   const [disabled, setDisabled] = useState(true);
