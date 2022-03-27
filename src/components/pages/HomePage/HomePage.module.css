@@ -3,7 +3,7 @@
     bottom: 70px;
     right: 50px;
     color: #f21137;
-    
+    transition:0.4s;
 }
 .test img {
     width: 40px;
