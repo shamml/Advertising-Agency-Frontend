@@ -39,11 +39,31 @@ nav a {
 }
 
 .cartIcon {
+  position: relative;
+}
+
+.cartIcon img {
   width: 40px;
   height: 40px;
   margin-right: 20px;
   cursor: pointer;
 }
+
+.amount {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border-radius: 15px;
+  line-height: 18px;
+  background-color: #f21137;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  top: 0;
+  left: -5px;
+  border: 3px solid white;
+}
+
 .signInBtn {
   width: 130px;
   height: 40px;
@@ -58,12 +78,14 @@ nav a {
   top: 40px;
   left:20px;
   border-radius: 5px;
-  padding: 10px;
+  padding: 20px;
   width: 350px;
   z-index: 1;
-  border: 2px solid black;
+  background-color: #fff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .modal p {
   color: black;
   border-bottom: 1px solid black;
+  line-height: 30px;
 }

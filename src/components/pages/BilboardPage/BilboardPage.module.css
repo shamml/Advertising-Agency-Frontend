@@ -22,14 +22,14 @@ input[type='checkbox'] {
   width: 20px;
   height: 20px;
   margin-left: 10px;
+  cursor: pointer;
 }
 input:disabled {
-cursor: not-allowed;
+cursor: default;
 }
 .billboardCard {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   margin: 20px 20px;
-  
 }
 .box img {
   position: absolute;
@@ -52,8 +52,7 @@ cursor: not-allowed;
 }
 .orderBtn button:disabled {
   opacity: 0.5;
-  cursor: not-allowed;
 }
-.orderBtn:hover:after {
+/* .orderBtn:hover:after {
   content: attr(data-title);
-}
+} */
