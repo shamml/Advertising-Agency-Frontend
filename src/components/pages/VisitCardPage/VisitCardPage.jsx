@@ -3,7 +3,10 @@ import styles from './VisitCardPage.module.css';
 import visitCardImage from '../../../assets/visitcardimg.jpg';
 import bannerImage from '../../../assets/banner.jpg';
 import { useDispatch } from 'react-redux';
-import { addBannerToCart, addVisitCardToCart } from '../../../redux/features/cart';
+import {
+  addBannerToCart,
+  addVisitCardToCart,
+} from '../../../redux/features/cart';
 
 const VisitCardPage = () => {
   const dispatch = useDispatch();
@@ -45,14 +48,18 @@ const VisitCardPage = () => {
     setBannerType(e.target.value);
   };
 
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState('');
   const handleWidth = (e) => {
-    setWidth(e.target.value);
+    if (Number(e.target.value) || e.target.value === '') {
+      setWidth(e.target.value);
+    }
   };
 
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState('');
   const handleHeight = (e) => {
-    setHeight(e.target.value);
+    if (Number(e.target.value) || e.target.value === '') {
+      setHeight(e.target.value);
+    }
   };
 
   const [bannerDelivery, setBannerDelivery] = useState(0);
@@ -79,11 +86,20 @@ const VisitCardPage = () => {
     }
   };
 
-  const bannerPrice = Math.round(square * bannerType * bannerCount + bannerDelivery);
+  const bannerPrice = Math.round(
+    square * bannerType * bannerCount + bannerDelivery,
+  );
 
   const [bannerInCart, setBannerIncart] = useState(false);
   const handleClickAddBanner = () => {
-    dispatch(addBannerToCart(Number(bannerType), bannerCount, !!bannerDelivery, bannerPrice));
+    dispatch(
+      addBannerToCart(
+        Number(bannerType),
+        bannerCount,
+        !!bannerDelivery,
+        bannerPrice,
+      ),
+    );
     setBannerIncart(true);
     setTimeout(() => {
       setBannerIncart(false);
@@ -220,7 +236,7 @@ const VisitCardPage = () => {
             }
             onClick={handleClickAddBanner}
           >
-            {bannerInCart ? "Добавлено" : "Добавить в корзину"}
+            {bannerInCart ? 'Добавлено' : 'Добавить в корзину'}
           </button>
         </div>
         <div className={styles.price}>{bannerPrice}₽</div>
