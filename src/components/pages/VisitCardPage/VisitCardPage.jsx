@@ -9,6 +9,13 @@ import {
 } from '../../../redux/features/cart';
 
 const VisitCardPage = () => {
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+
   const dispatch = useDispatch();
 
   const [paper, setPaper] = useState(1);
