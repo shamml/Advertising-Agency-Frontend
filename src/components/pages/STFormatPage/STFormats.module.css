@@ -6,8 +6,9 @@
   padding-top: 130px;
 }
 .STFormatCard {
-  width: 300px;
-  margin: 15px 50px;
+  width: 350px;
+  margin: 15px 20px;
+  position: relative;
 }
 .STFormat {
   position: relative;
@@ -52,4 +53,12 @@ input[type='checkbox'] {
 }
 input:disabled {
 cursor: default;
+}
+
+.STFormatPrice {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-weight: 700;
+  font-size: 20px;
 }

@@ -70,9 +70,9 @@ const CartPage = () => {
                 <div className={styles.item2}>{rent.name}</div>
                 <div className={styles.item3}>{rent.address}</div>
                 <div className={styles.item4}>
-                  {rent.sideA && rent.sideB ? <div>Обе стороны</div> : ''}
-                  {rent.sideA && !rent.sideB && <div>Сторона А</div>}
-                  {!rent.sideA && rent.sideB && <div>Сторона Б</div>}
+                  {rent.sideA.selected && rent.sideB.selected ? <div>Обе стороны</div> : ''}
+                  {rent.sideA.selected && !rent.sideB.selected && <div>Сторона А</div>}
+                  {!rent.sideA.selected && rent.sideB.selected && <div>Сторона Б</div>}
                 </div>
                 <div className={styles.item5}>{rent.price}₽</div>
                 <button onClick={() => handleDeleteRent(rent._id, rent.price)}>
