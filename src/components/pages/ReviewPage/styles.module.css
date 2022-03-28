@@ -1,8 +1,11 @@
-.containerReview {
-  width: 700px;
-  height: 700px;
-  margin: auto;
+.reviewMain {
   padding-top: 130px;
+  min-height: 90%;
+}
+
+.containerReview {
+  margin: auto;
+  width: 700px;
 }
 
 .containerReview input {
@@ -12,10 +15,11 @@
 
 .containerReview textarea {
   width: 650px;
-  height: 250px;
+  height: 100px;
   margin: 10px 25px;
   resize: none;
   outline: none;
+  padding: 10px;
 }
 
 .containerReview button {
@@ -86,4 +90,33 @@ input[type="text"] {
 
 .containerReview label {
   cursor: pointer;
+}
+
+.reviewBlock {
+  margin: 5px 0;
+  padding: 3px;
+  width: 650px;
+  margin: auto;
+  border-bottom: 1px solid black;
+}
+
+.reviewBlock div {
+  margin-bottom: 5px;
+}
+
+.aboutUsBlock {
+  width: 1000px;
+  margin: auto;
+}
+
+.aboutUsBlock h1 {
+  font-size: 35px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.aboutUsBlock h3 {
+  font-size: 22px;
+  padding: 20px 0;
+  text-align: center;
 }

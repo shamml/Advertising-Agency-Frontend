@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { getAllReview } from '../../../redux/features/reviews'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import styles  from "./styles.module.css";
 
 const ReviewCustomer = () => {
   const dispatch = useDispatch();
@@ -15,18 +16,14 @@ const ReviewCustomer = () => {
     <div>
       {review.map((review) => {
         return (
-          <div>
+          <div className={styles.reviewBlock}>
             <div>
-              {review._id}
+              {review.recommendation.yes ? <h3>😊</h3> : ''}
+              {review.recommendation.no ? <h3>🙁</h3> : ''}
             </div>
             <div>
               {review.text}
             </div>
-            <div>
-              {review.recommendation.yes ? <h3>Рекомендую</h3> : ''}
-              {review.recommendation.no ? <h3>Не рекомендую</h3> : ''}
-            </div>
-
           </div>
         );
       })}

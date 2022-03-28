@@ -86,7 +86,8 @@ export const authorization = (login, password) => {
         body: JSON.stringify({ login, password }),
       });
       const json = await responce.json();
-      dispatch({ type: 'application/auhtorization/fulfilled', payload: json });
+      console.log(json);
+      dispatch({ type: 'application/authorization/fulfilled', payload: json });
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
     } catch (e) {

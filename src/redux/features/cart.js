@@ -3,6 +3,7 @@ const initialState = {
     rents: [],
     sales: [],
   },
+  order: [],
   total: 0,
   error: null,
   loading: false,
@@ -83,10 +84,10 @@ export default function cart(state = initialState, action) {
             if (rent._id === action.payload) {
               return {
                 ...rent,
-                deleting: true
-              }
+                deleting: true,
+              };
             }
-            return rent
+            return rent;
           }),
         },
       };
@@ -163,14 +164,14 @@ export default function cart(state = initialState, action) {
             if (sale._id === action.payload) {
               return {
                 ...sale,
-                deleting:true
-              }
+                deleting: true,
+              };
             }
-            return sale
-          })
+            return sale;
+          }),
         },
       };
-      
+
     case 'visitcards/delete/fulfilled':
       return {
         ...state,
@@ -199,11 +200,11 @@ export default function cart(state = initialState, action) {
             if (sale._id === action.payload) {
               return {
                 ...sale,
-                deleting:true
-              }
+                deleting: true,
+              };
             }
-            return sale
-          })
+            return sale;
+          }),
         },
       };
     case 'banners/delete/fulfilled':
@@ -221,6 +222,28 @@ export default function cart(state = initialState, action) {
       return {
         ...state,
         error: action.error,
+      };
+    //оформление заказа
+    case 'order/add/pending':
+      return {
+        ...state,
+        loading: true,
+      };
+      case 'order/add/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        order: action.payload,
+        products: {
+          rents: [],
+          sales: [],
+        },
+      };
+      case 'order/add/rejected':
+      return {
+        ...state,
+        loading: false,
+        error:action.error
       };
 
     default:
@@ -255,8 +278,6 @@ export const fetchRents = () => {
   };
 };
 
-
-
 export const addSTFormatToCart = (id, selectedA, selectedB) => {
   return async (dispatch, getSate) => {
     const state = getSate();
@@ -272,14 +293,14 @@ export const addSTFormatToCart = (id, selectedA, selectedB) => {
           },
           body: JSON.stringify({
             selectedA,
-            selectedB
+            selectedB,
           }),
         },
       );
 
       const json = await res.json();
       console.log(json);
-      
+
       if (json.error) {
         dispatch({
           type: 'STFormat/patch/rejected',
@@ -310,7 +331,7 @@ export const addBillboardToCart = (id, selectedA, selectedB) => {
           },
           body: JSON.stringify({
             selectedA,
-            selectedB
+            selectedB,
           }),
         },
       );
@@ -390,7 +411,7 @@ export const deleteVisitCard = (id) => {
       });
       const json = await res.json();
 
-      console.log(json)
+      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -427,7 +448,7 @@ export const addBannerToCart = (typePaper, count, delivery, price) => {
             typePaper,
             count,
             delivery,
-            price
+            price,
           }),
         },
       );
@@ -493,25 +514,57 @@ export const deleteRent = (id, price) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.application.token}`,
         },
-        body: JSON.stringify({id: id})
+        body: JSON.stringify({ id: id }),
       });
       const json = await res.json();
 
-      console.log(json)
+      console.log(json);
 
       if (json.error) {
         dispatch({
           type: 'rent/delete/rejected',
           error: 'Ошибка при запросе',
-        })
-      }else {
-        dispatch({ type: 'rent/delete/fulfilled', payload: {id, price} });
+        });
+      } else {
+        dispatch({ type: 'rent/delete/fulfilled', payload: { id, price } });
       }
     } catch (e) {
       dispatch({
         type: 'rent/delete/rejected',
         error: e.toString(),
-      })
+      });
+    }
+  };
+};
+
+export const order = () => {
+  return async (dispatch, getSate) => {
+    const state = getSate();
+    dispatch({ type: 'order/add/pending' });
+    try {
+      const res = await fetch('http://localhost:3030/orders/user', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${state.application.token}`,
+        },
+      });
+      const json = await res.json();
+      console.log(json);
+
+      if (json.error) {
+        dispatch({
+          type: 'order/add/rejected',
+          error: 'Ошибка при запросе',
+        });
+      } else {
+        dispatch({ type: 'order/add/fulfilled', payload: json });
+      }
+    } catch (e) {
+      dispatch({
+        type: 'order/add/rejected',
+        error: e.toString(),
+      });
     }
   };
 };

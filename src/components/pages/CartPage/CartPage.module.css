@@ -3,6 +3,7 @@
   min-height: 90%;
   margin: 0 auto;
   padding-top: 130px;
+  position: relative;
   /* text-align: center; */
 }
 
@@ -105,4 +106,19 @@
 
 .deleting {
   opacity: 0.5;
+}
+
+.success {
+  width: 500px;
+  height: 50px;
+  margin: auto;
+  line-height: 50px;
+  position: absolute;
+  top: 100px;
+  left: 50vh;
+  background-color: #d4edda;
+  border: 1.5px solid #c3e6cb;
+  color: #155724;
+  text-align: center;
+  border-radius: 0.25rem
 }
