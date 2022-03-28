@@ -9,13 +9,7 @@ import {
 } from '../../../redux/features/cart';
 
 const VisitCardPage = () => {
-
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
-
+  // визитка
   const dispatch = useDispatch();
 
   const [paper, setPaper] = useState(1);
@@ -48,8 +42,7 @@ const VisitCardPage = () => {
     }, 1000);
   };
 
-  //////////////////////
-
+  // Баннер
   const [bannerType, setBannerType] = useState(450);
   const checkBannerType = (e) => {
     setBannerType(e.target.value);
