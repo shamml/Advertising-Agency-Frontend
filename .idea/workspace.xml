@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffe79d55-e3dc-4efc-a778-77a9da5d2d6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/pages/BilboardPage/Bilboard.buttons.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/ReviewPage/reviewCustomer.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../news-site-beckend/.prettierrc" afterDir="false" />
@@ -121,9 +119,12 @@
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/map/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/map/Map.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/BilboardPage/Bilboard.buttons.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/BilboardPage/BilboardCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/BilboardPage/BilboardCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/ReviewPage/ReviewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ReviewPage/ReviewPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/features/reviews.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/features/reviews.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/BilboardPage/k.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/HomePage/HomePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.prettierrc" beforeDir="false" />
@@ -755,5 +756,17 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/pages/BilboardPage/BilboardCard.jsx</url>
+          <line>61</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

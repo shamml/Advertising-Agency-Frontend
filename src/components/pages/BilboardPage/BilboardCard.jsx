@@ -6,9 +6,9 @@ import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
-import BilboardButtons from './Bilboard.buttons'
 
 const BilboardCard = ({ billboard }) => {
+  const dispatch = useDispatch()
   const [selectedA, setSelectedA] = useState(false);
   const [selectedB, setSelectedB] = useState(false);
 
@@ -53,7 +53,6 @@ const BilboardCard = ({ billboard }) => {
             {' '}
             <BiRuble /> {billboard.price}
           </div>
-
           <div className={styles.sideA}>
             <CgSidebar />
             sideA:{' '}
