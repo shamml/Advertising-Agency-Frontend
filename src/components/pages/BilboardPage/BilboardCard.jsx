@@ -6,14 +6,13 @@ import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
+import BilboardButtons from './Bilboard.buttons'
 
 const BilboardCard = ({ billboard }) => {
   const [selectedA, setSelectedA] = useState(false);
   const [selectedB, setSelectedB] = useState(false);
 
   const [billboardPrice, setBillboardPrice] = useState(0);
-
-  const dispatch = useDispatch();
 
   const handleClickPatchSideA = () => {
     if (selectedA) {
@@ -34,7 +33,6 @@ const BilboardCard = ({ billboard }) => {
       setBillboardPrice(billboardPrice + billboard.price)
     }
   };
-
   const rents = useSelector(state => state.cart.products.rents);
   const inCart = rents.find(rent => rent._id === billboard._id);
   const handleAddBillboard = (id) => {
