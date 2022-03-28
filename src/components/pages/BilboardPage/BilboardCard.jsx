@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBillboardToCart } from '../../../redux/features/cart';
 import styles from './BilboardPage.module.css';
 import { CgSidebarRight } from 'react-icons/cg';
@@ -9,26 +9,35 @@ import { BiRuble } from 'react-icons/bi';
 import BilboardButtons from './Bilboard.buttons'
 
 const BilboardCard = ({ billboard }) => {
+  const [selectedA, setSelectedA] = useState(false);
+  const [selectedB, setSelectedB] = useState(false);
 
-  const [sideA, setSideA] = useState(false);
-  const [sideB, setSideB] = useState(false);
+  const [billboardPrice, setBillboardPrice] = useState(0);
 
   const handleClickPatchSideA = () => {
-    setSideA(!sideA);
+    if (selectedA) {
+      setSelectedA(false)
+      setBillboardPrice(billboardPrice - billboard.price)
+    } else {
+      setSelectedA(true);
+      setBillboardPrice(billboardPrice + billboard.price)
+    }
   };
 
   const handleClickPatchSideB = () => {
-    setSideB(!sideB);
+    if (selectedB) {
+      setSelectedB(false)
+      setBillboardPrice(billboardPrice - billboard.price)
+    } else {
+      setSelectedB(true);
+      setBillboardPrice(billboardPrice + billboard.price)
+    }
   };
-
-  // для дальнейшей работы на стороне админа
-
-  // const patchSideAlphaBillboard = () => {
-  //   dispatch(patchSideABillboard(id, sideA));
-  // };
-  // const patchSideBetaBillboard = (id) => {
-  //   dispatch(patchSideBBillboard(id, sideB));
-  // };
+  const rents = useSelector(state => state.cart.products.rents);
+  const inCart = rents.find(rent => rent._id === billboard._id);
+  const handleAddBillboard = (id) => {
+    dispatch(addBillboardToCart(id, selectedA, selectedB));
+  };
 
   return (
     <div className={styles.billboardCards}>
@@ -48,12 +57,12 @@ const BilboardCard = ({ billboard }) => {
           <div className={styles.sideA}>
             <CgSidebar />
             sideA:{' '}
-              <input
-                value={sideA}
-                onChange={handleClickPatchSideA}
-                type="checkbox"
-                disabled={billboard.sideA}
-              />
+            <input
+              type="checkbox"
+              onChange={handleClickPatchSideA}
+              value={selectedA}
+              disabled={billboard.sideA.reserved}
+            />
           </div>
           <div className={styles.sideB}>
             <div>
@@ -61,16 +70,31 @@ const BilboardCard = ({ billboard }) => {
             </div>
             <div>
               sideB:{' '}
-                <input
-                  type="checkbox"
-                  value={sideB}
-                  onChange={handleClickPatchSideB}
-                  disabled={billboard.sideB}
-                />
+              <input
+                type="checkbox"
+                value={selectedB}
+                onChange={handleClickPatchSideB}
+                disabled={billboard.sideB.reserved}
+              />
             </div>
           </div>
-          <BilboardButtons sideA={sideA} sideB={sideB} id={billboard._id}/>
+          <div className={styles.orderBtn}>
+            <button
+              onClick={() => handleAddBillboard(billboard._id)}
+              disabled={
+                (billboard.sideA.reserved && billboard.sideB.reserved) ||
+                (!selectedA && !selectedB) ||
+                (inCart)
+              }
+            >
+              {inCart && "Добавлено в корзину"}
+              {(billboard.sideA.reserved && billboard.sideB.reserved) && "Нет свободных сторон"}
+              {((!selectedA && !selectedB) && (!billboard.sideA.reserved || !billboard.sideB.reserved) && (!inCart)) && "Выберите сторону"}
+              {((selectedA || selectedB) && (!inCart)) && "Добавить в корзину"}
+            </button>
+          </div>
         </div>
+        <div className={styles.billboardPrice}>{billboardPrice}₽</div>
       </div>
     </div>
   );
