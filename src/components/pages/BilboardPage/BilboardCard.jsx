@@ -6,12 +6,12 @@ import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
+import BilboardButtons from './Bilboard.buttons'
 
 const BilboardCard = ({ billboard }) => {
+
   const [sideA, setSideA] = useState(false);
   const [sideB, setSideB] = useState(false);
-
-  const dispatch = useDispatch();
 
   const handleClickPatchSideA = () => {
     setSideA(!sideA);
@@ -19,11 +19,6 @@ const BilboardCard = ({ billboard }) => {
 
   const handleClickPatchSideB = () => {
     setSideB(!sideB);
-  };
-
-  const handleAddBillboard = (id) => {
-    dispatch(addBillboardToCart(id, sideA, sideB));
-    console.log(sideA, sideB);
   };
 
   // для дальнейшей работы на стороне админа
@@ -74,11 +69,7 @@ const BilboardCard = ({ billboard }) => {
                 />
             </div>
           </div>
-          <div className={styles.orderBtn}>
-            <button disabled={(sideA || !sideB) && (!sideA || sideB) && (!sideA || !sideB) ? "disabled" : ""} onClick={() => handleAddBillboard(billboard._id)}>
-              Добавить в корзину
-            </button>
-          </div>
+          <BilboardButtons sideA={sideA} sideB={sideB} id={billboard._id}/>
         </div>
       </div>
     </div>

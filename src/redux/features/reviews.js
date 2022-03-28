@@ -17,7 +17,7 @@ export default function reviews(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        reviews: [...state.reviews, action.payload]
+        reviews: [action.payload, ...state.reviews]
       };
     case 'reviews/addreview/rejected':
       return {

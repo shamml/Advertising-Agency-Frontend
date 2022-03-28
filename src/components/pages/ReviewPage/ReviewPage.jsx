@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addReview, getAllReview } from '../../../redux/features/reviews';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addReview } from '../../../redux/features/reviews';
 import styles from './styles.module.css';
+import ReviewCustomer from './reviewCustomer';
 
 function ReviewPage() {
-
   window.scrollTo({
     top: 0,
     left: 0,
     behavior: 'smooth',
   });
-  
+
   const dispatch = useDispatch();
 
   const [disabled, setDisabled] = useState(true);
-  const review = useSelector((state) => state.reviews.reviews);
 
   const [text, setText] = useState('');
 
@@ -46,9 +45,6 @@ function ReviewPage() {
     setYes(false);
     setNo(false);
   }
-  useEffect(() => {
-    dispatch(getAllReview());
-  }, [dispatch]);
 
   return (
     <div className={styles.containerReview}>
@@ -90,9 +86,7 @@ function ReviewPage() {
         Отправить
       </button>
       <div>
-        {review.map((review) => {
-          return <div>{review.text}</div>;
-        })}
+        <ReviewCustomer />
       </div>
     </div>
   );
