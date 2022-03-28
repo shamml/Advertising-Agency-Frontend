@@ -6,6 +6,7 @@ import stformat from './features/stformat';
 import bilboard from './features/bilboard';
 import cart from './features/cart';
 import order from './features/order';
+import reviews from './features/reviews';
 
 export const store = createStore(
   combineReducers({
@@ -13,7 +14,8 @@ export const store = createStore(
     bilboard,
     stformat,
     cart,
-    order
+    reviews,
+    order,
   }),
   composeWithDevTools(applyMiddleware(thunk)),
 );

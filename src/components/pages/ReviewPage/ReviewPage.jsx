@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addReview } from '../../../redux/features/review';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addReview, getAllReview } from '../../../redux/features/reviews';
 import styles from './styles.module.css';
 
 function ReviewPage() {
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+  
   const dispatch = useDispatch();
 
   const [disabled, setDisabled] = useState(true);
+  const review = useSelector((state) => state.reviews.reviews);
 
   const [text, setText] = useState('');
 
@@ -38,10 +46,13 @@ function ReviewPage() {
     setYes(false);
     setNo(false);
   }
+  useEffect(() => {
+    dispatch(getAllReview());
+  }, [dispatch]);
 
   return (
     <div className={styles.containerReview}>
-      <input className={styles.oneWordReview} type="text" name="text" />
+      {/*<input className={styles.oneWordReview} type="text" name="text" />*/}
       <p>Если бы ваш отзыв ограничивался одной фразой, что бы вы сказали?</p>
       <textarea
         className={styles.textReview}
@@ -59,9 +70,9 @@ function ReviewPage() {
             type="radio"
             checked={yes}
             name="rec"
-            id='rec1'
+            id="rec1"
           />
-          <label htmlFor='rec1'>Да</label>
+          <label htmlFor="rec1">Да</label>
         </div>
         <div className={styles.no}>
           <input
@@ -70,14 +81,19 @@ function ReviewPage() {
             type="radio"
             checked={no}
             name="rec"
-            id='rec2'
+            id="rec2"
           ></input>
-          <label htmlFor='rec2'>Нет</label>
+          <label htmlFor="rec2">Нет</label>
         </div>
       </div>
       <button disabled={disabled} onClick={handleClickAddReview}>
         Отправить
       </button>
+      <div>
+        {review.map((review) => {
+          return <div>{review.text}</div>;
+        })}
+      </div>
     </div>
   );
 }

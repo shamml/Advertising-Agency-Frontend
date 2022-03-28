@@ -17,8 +17,28 @@ export default function reviews(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        reviews: [...state.reviews, action.payload]
       };
     case 'reviews/addreview/rejected':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    // Вывод отзывов
+    case 'reviews/getreview/pending':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'reviews/getreview/fulfilled':
+      return {
+        ...state,
+        loading: false,
+        reviews: action.payload
+      };
+    case 'reviews/getreview/rejected':
       return {
         ...state,
         loading: false,
@@ -34,7 +54,7 @@ export const addReview = (text, yes, no) => {
     const state = getState();
     dispatch({ type: 'reviews/addreview/pending' });
     try {
-      const responce = await fetch('http://localhost:3030/reviews', {
+      const res = await fetch('http://localhost:3030/reviews', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -42,10 +62,24 @@ export const addReview = (text, yes, no) => {
         },
         body: JSON.stringify({ text, yes, no }),
       });
-      const json = await responce.json();
+      const json = await res.json();
+      console.log(json)
       dispatch({ type: 'reviews/addreview/fulfilled', payload: json });
     } catch (e) {
       dispatch({ type: 'reviews/addreview/rejected', error: e.toString() });
+    }
+  };
+};
+export const getAllReview = () => {
+  return async (dispatch) => {
+    dispatch({ type: 'reviews/getreview/pending' });
+    try {
+      const res = await fetch('http://localhost:3030/reviews');
+      const json = await res.json();
+      console.log(json)
+      dispatch({ type: 'reviews/getreview/fulfilled', payload: json });
+    } catch (e) {
+      dispatch({ type: 'reviews/getreview/rejected', error: e.toString() });
     }
   };
 };

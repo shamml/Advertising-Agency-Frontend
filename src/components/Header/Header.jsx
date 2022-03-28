@@ -30,6 +30,14 @@ const Header = () => {
     setContacts(!contacts)
   };
 
+  const goToUp = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+
   const token = useSelector((state) => state.application.token);
   const rentsInCartLength = useSelector((state => state.cart.products.rents.length));
   const salesInCartLength = useSelector((state => state.cart.products.sales.length));
@@ -38,7 +46,7 @@ const Header = () => {
   return (
     <header className={ scroll ? styles.fixed : ""}>
       <Link to="/">
-        <img className={styles.logoImage} src={logo} alt="pictur" />
+        <img onClick={goToUp} className={styles.logoImage} src={logo} alt="pictur" />
       </Link>
       <nav>
         <Link to="/reviews">

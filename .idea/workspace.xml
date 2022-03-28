@@ -119,16 +119,9 @@
       <change beforePath="$PROJECT_DIR$/../Total Commander — копия.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Website" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/bilboard/Bilboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bilboard/Bilboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/bilboard/Bilboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bilboard/Bilboard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/Carousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel/Carousel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/Carousel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel/Carousel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/HeaderModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/features/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/features/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/ReviewPage/ReviewPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ReviewPage/ReviewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/features/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/features/reviews.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../avito" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend-intocode/.prettierrc" beforeDir="false" />
