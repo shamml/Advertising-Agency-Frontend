@@ -257,7 +257,7 @@ export const fetchRents = () => {
 
 
 
-export const addSTFormatToCart = (id, sideA, sideB) => {
+export const addSTFormatToCart = (id, selectedA, selectedB) => {
   return async (dispatch, getSate) => {
     const state = getSate();
     dispatch({ type: 'STFormat/patch/pending' });
@@ -271,14 +271,15 @@ export const addSTFormatToCart = (id, sideA, sideB) => {
             Authorization: `Bearer ${state.application.token}`,
           },
           body: JSON.stringify({
-            sideA: sideA,
-            sideB: sideB,
+            selectedA,
+            selectedB
           }),
         },
       );
-      const json = await res.json();
 
+      const json = await res.json();
       console.log(json);
+      
       if (json.error) {
         dispatch({
           type: 'STFormat/patch/rejected',
@@ -294,7 +295,7 @@ export const addSTFormatToCart = (id, sideA, sideB) => {
   };
 };
 
-export const addBillboardToCart = (id, sideA, sideB) => {
+export const addBillboardToCart = (id, selectedA, selectedB) => {
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'billboard/patch/pending' });
@@ -308,8 +309,8 @@ export const addBillboardToCart = (id, sideA, sideB) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            sideA: sideA,
-            sideB: sideB,
+            selectedA,
+            selectedB
           }),
         },
       );

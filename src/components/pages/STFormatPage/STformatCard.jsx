@@ -1,23 +1,45 @@
 import React, { useState } from 'react';
 import styles from './STFormats.module.css';
-import StFormatButtons from './STFormatButtons';
 import { GrLocation } from 'react-icons/gr';
 import { BiRuble } from 'react-icons/bi';
 import { CgSidebarRight } from 'react-icons/cg';
 import { CgSidebar } from 'react-icons/cg';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSTFormatToCart } from '../../../redux/features/cart';
 
 const STformatCard = ({ STFormat }) => {
+  const dispatch = useDispatch();
 
-  const [sideA, setSideA] = useState(false);
-  const [sideB, setSideB] = useState(false);
-  console.log(`sideA: ${sideA} sideB ${sideB}`)
+  const [selectedA, setSelectedA] = useState(false);
+  const [selectedB, setSelectedB] = useState(false);
+
+  const [STFormatPrice, setSTFormatPrice] = useState(0);
 
   const handleClickPatchSideA = () => {
-    setSideA(!sideA);
+    if (selectedA) {
+      setSelectedA(false)
+      setSTFormatPrice(STFormatPrice - STFormat.price)
+    } else {
+      setSelectedA(true);
+      setSTFormatPrice(STFormatPrice + STFormat.price)
+    }
   };
 
   const handleClickPatchSideB = () => {
-    setSideB(!sideB);
+    if (selectedB) {
+      setSelectedB(false)
+      setSTFormatPrice(STFormatPrice - STFormat.price)
+    } else {
+      setSelectedB(true);
+      setSTFormatPrice(STFormatPrice + STFormat.price)
+    }
+  };
+
+  const rents = useSelector(state => state.cart.products.rents);
+  const inCart = rents.find(rent => rent._id === STFormat._id);
+  const handleAddSTFormat = (id, selectedA, selectedB) => {
+    dispatch(addSTFormatToCart(id, selectedA, selectedB));
+    console.log(selectedA, selectedB);
   };
 
   return (
@@ -33,7 +55,8 @@ const STformatCard = ({ STFormat }) => {
             <input
               type="checkbox"
               onChange={handleClickPatchSideA}
-              value={sideA}
+              value={selectedA}
+              disabled={STFormat.sideA.reserved}
             />
           ) : (
             <input type="checkbox" disabled={true} />
@@ -49,23 +72,35 @@ const STformatCard = ({ STFormat }) => {
               <input
                 type="checkbox"
                 onChange={handleClickPatchSideB}
-                value={sideB}
+                value={selectedB}
+                disabled={STFormat.sideB.reserved}
               />
             ) : (
               <input type="checkbox" disabled={true} />
             )}
           </div>
         </div>
-        <div className={styles.price}>
-          {' '}
-          <BiRuble /> {STFormat.price}
-        </div>
         <div className={styles.address}>
           {' '}
           <GrLocation /> {STFormat.address}
         </div>
-        <StFormatButtons STFormat={STFormat} sideA={sideA} sideB={sideB} />
+        <div className={styles.STFormatButtons}>
+        <button
+              onClick={() => handleAddSTFormat(STFormat._id)}
+              disabled={
+                (STFormat.sideA.reserved && STFormat.sideB.reserved) ||
+                (!selectedA && !selectedB) ||
+                (inCart)
+              }
+            >
+              {inCart && "Добавлено в корзину"}
+              {(STFormat.sideA.reserved && STFormat.sideB.reserved) && "Нет свободных сторон"}
+              {((!selectedA && !selectedB) && (!STFormat.sideA.reserved || !STFormat.sideB.reserved) && (!inCart)) && "Выберите сторону"}
+              {((selectedA || selectedB) && (!inCart)) && "Добавить в корзину"}
+            </button>
+        </div>
       </div>
+      <div className={styles.STFormatPrice}>{STFormatPrice}₽</div>
     </div>
   );
 };
