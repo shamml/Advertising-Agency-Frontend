@@ -63,7 +63,6 @@ export const addReview = (text, yes, no) => {
         body: JSON.stringify({ text, yes, no }),
       });
       const json = await res.json();
-      console.log(json)
       dispatch({ type: 'reviews/addreview/fulfilled', payload: json });
     } catch (e) {
       dispatch({ type: 'reviews/addreview/rejected', error: e.toString() });
@@ -76,7 +75,6 @@ export const getAllReview = () => {
     try {
       const res = await fetch('http://localhost:3030/reviews');
       const json = await res.json();
-      console.log(json)
       dispatch({ type: 'reviews/getreview/fulfilled', payload: json });
     } catch (e) {
       dispatch({ type: 'reviews/getreview/rejected', error: e.toString() });

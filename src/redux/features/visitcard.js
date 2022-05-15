@@ -22,9 +22,7 @@ export const addVisitCard = (paper, count, delivery, price) => {
       },
       body: JSON.stringify({ typePaper: paper, count: count, delivery: delivery, price: price }), 
     });
-
     const visitCard = res.json();
-    console.log(visitCard);
 
     if (visitCard.error) {
       dispatch({ type: "visit/add/rejected", error: visitCard.error});

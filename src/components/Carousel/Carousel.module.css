@@ -41,6 +41,10 @@
 .form {
   width: 350px;
 }
+.form button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
 
 .formTitle {
   font-size: 12px;
