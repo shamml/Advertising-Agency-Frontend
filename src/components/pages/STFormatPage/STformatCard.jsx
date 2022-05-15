@@ -39,7 +39,6 @@ const STformatCard = ({ STFormat }) => {
   const inCart = rents.find(rent => rent._id === STFormat._id);
   const handleAddSTFormat = (id, selectedA, selectedB) => {
     dispatch(addSTFormatToCart(id, selectedA, selectedB));
-    console.log(selectedA, selectedB);
   };
 
   return (

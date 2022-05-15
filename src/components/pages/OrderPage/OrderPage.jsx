@@ -7,7 +7,6 @@ function OrderPage() {
     const dispatch = useDispatch()
     const rents = useSelector(state => state.order.orders.rents)
     const loading = useSelector(state => state.order.loading)
-    console.log(rents)
 
     useEffect(() => {
         dispatch(fetchOrders())

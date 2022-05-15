@@ -299,8 +299,6 @@ export const addSTFormatToCart = (id, selectedA, selectedB) => {
       );
 
       const json = await res.json();
-      console.log(json);
-
       if (json.error) {
         dispatch({
           type: 'STFormat/patch/rejected',
@@ -310,7 +308,6 @@ export const addSTFormatToCart = (id, selectedA, selectedB) => {
         dispatch({ type: 'STFormat/patch/fulfilled', payload: json });
       }
     } catch (e) {
-      console.log('ошибка');
       dispatch({ type: 'STFormat/patch/rejected', error: e.toString() });
     }
   };
@@ -336,8 +333,6 @@ export const addBillboardToCart = (id, selectedA, selectedB) => {
         },
       );
       const json = await res.json();
-
-      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -378,7 +373,6 @@ export const addVisitCardToCart = (paper, count, delivery, price) => {
         },
       );
       const json = await res.json();
-      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -411,8 +405,6 @@ export const deleteVisitCard = (id) => {
       });
       const json = await res.json();
 
-      console.log(json);
-
       if (json.error) {
         dispatch({
           type: 'visitcards/delete/rejected',
@@ -431,7 +423,6 @@ export const deleteVisitCard = (id) => {
 };
 
 export const addBannerToCart = (typePaper, count, delivery, price) => {
-  console.log(typePaper, count, delivery, price);
   return async (dispatch, getState) => {
     const state = getState();
     dispatch({ type: 'banners/add/pending' });
@@ -453,7 +444,6 @@ export const addBannerToCart = (typePaper, count, delivery, price) => {
         },
       );
       const json = await res.json();
-      console.log(json);
 
       if (json.error) {
         dispatch({
@@ -518,8 +508,6 @@ export const deleteRent = (id, price) => {
       });
       const json = await res.json();
 
-      console.log(json);
-
       if (json.error) {
         dispatch({
           type: 'rent/delete/rejected',
@@ -550,7 +538,6 @@ export const order = () => {
         },
       });
       const json = await res.json();
-      console.log(json);
 
       if (json.error) {
         dispatch({
